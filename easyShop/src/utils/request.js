@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {getToken} from '@/utils/index'
+import {getToken} from './utils/index'
 //获取全局的报错信息
 // import {message} from 'antd';
 // create an axios instance

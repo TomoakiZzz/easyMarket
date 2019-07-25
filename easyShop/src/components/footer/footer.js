@@ -1,70 +1,51 @@
 import React from 'react'
-import { TabBar } from 'antd-mobile';
+import './footer.scss'
+import { NavLink } from 'react-router-dom'
+import '../../fonts/iconfont.css'
 class Footer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedTab: 'redTab',
-            hidden: false,
-            fullScreen: false,
-        };
-    }
-    
     render() {
         return (
-            <div>
-                <TabBar>
-                    <TabBar.Item
-                        title="专题"
-                        icon={<div style={{
-                            width: '22px',
-                            height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat'
-                        }}
-                        />
-                        }
-                        selectedIcon={<div style={{
-                            width: '22px',
-                            height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
-                        }}
-                        />
-                        }
-                        selected={this.state.selectedTab === 'blueTab'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: 'blueTab',
-                            });
-                        }}
-                    >
-                    </TabBar.Item>
-                    <TabBar.Item
-                        icon={
-                            <div style={{
-                                width: '22px',
-                                height: '22px',
-                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'
-                            }}
-                            />
-                        }
-                        // selectedIcon={
-                        //     <div style={{
-                        //         width: '22px',
-                        //         height: '22px',
-                        //         background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'
-                        //     }}
-                        //     />
-                        // }
-                        title="Koubei"
-                        selected={this.state.selectedTab === 'redTab'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: 'redTab',
-                            });
-                        }}
-                    >
-                    </TabBar.Item>
-                </TabBar>
+            <div className='footer'>
+                <div className='tabItem'>
+                    <NavLink to=''>
+                        <div className='itemIcon'>
+                            <i class="iconfont icon-shouye"></i>
+                        </div>
+                        <div className='itemName'>首页</div>
+                    </NavLink>
+                </div>
+                <div className='tabItem'>
+                    <NavLink to=''>
+                        <div className='itemIcon'>
+                            <i class="iconfont icon-fuzhi"></i>
+                        </div>
+                        <div className='itemName'>专题</div>
+                    </NavLink>
+                </div>
+                <div className='tabItem'>
+                    <NavLink to=''>
+                        <div className='itemIcon'>
+                            <i class="iconfont icon-gongzuo"></i>
+                        </div>
+                        <div className='itemName'>分类</div>
+                    </NavLink>
+                </div>
+                <div className='tabItem'>
+                    <NavLink to=''>
+                        <div className='itemIcon'>
+                            <i class="iconfont icon-gouwuche"></i>
+                        </div>
+                        <div className='itemName'>购物车</div>
+                    </NavLink>
+                </div>
+                <div className='tabItem'>
+                    <NavLink to='/my'>
+                        <div className='itemIcon'>
+                            <i class="iconfont icon-wode"></i>
+                        </div>
+                        <div className='itemName'>我的</div>
+                    </NavLink>
+                </div>
             </div>
         )
     }

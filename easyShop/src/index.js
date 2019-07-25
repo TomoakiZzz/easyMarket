@@ -1,22 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './views/login/login'
-import Main from './views/main/main'
 import 'antd-mobile/dist/antd-mobile.css';
-
-
+import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom'
+import Login from './views/login/login'
+import My from './views/My/my'
 // 引入mobx
 import { Provider } from 'mobx-react';
-import { Route, Switch, Redirect,BrowserRouter } from 'react-router-dom'
 import store from './store'
-
 
 ReactDOM.render(<Provider {...store}>
     <BrowserRouter>
         <Switch>
-            <Redirect from="/" exact to="/main" />
+            {/* <Redirect from="/" exact to="/home" /> */}
             <Route path='/login' component={Login} />
-            <Route path='/main' component={Main} />
+            <Route path='/my' component={My} />
         </Switch>
     </BrowserRouter>
 </Provider>, document.getElementById('root'));
