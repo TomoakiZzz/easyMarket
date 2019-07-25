@@ -7,33 +7,33 @@ class Footer extends React.Component {
         return (
             <div className='footer'>
                 <div className='tabItem'>
-                    <NavLink to=''>
+                    <NavLink to='/home'>
                         <div className='itemIcon'>
-                            <i class="iconfont icon-shouye"></i>
+                            <i className="iconfont icon-shouye"></i>
                         </div>
                         <div className='itemName'>首页</div>
                     </NavLink>
                 </div>
                 <div className='tabItem'>
-                    <NavLink to=''>
+                    <NavLink to='/special'>
                         <div className='itemIcon'>
-                            <i class="iconfont icon-fuzhi"></i>
+                            <i className="iconfont icon-fuzhi"></i>
                         </div>
                         <div className='itemName'>专题</div>
                     </NavLink>
                 </div>
                 <div className='tabItem'>
-                    <NavLink to=''>
+                    <NavLink to='/classification'>
                         <div className='itemIcon'>
-                            <i class="iconfont icon-gongzuo"></i>
+                            <i className="iconfont icon-gongzuo"></i>
                         </div>
                         <div className='itemName'>分类</div>
                     </NavLink>
                 </div>
                 <div className='tabItem'>
-                    <NavLink to=''>
+                    <NavLink to='/shoppingcart'>
                         <div className='itemIcon'>
-                            <i class="iconfont icon-gouwuche"></i>
+                            <i className="iconfont icon-gouwuche"></i>
                         </div>
                         <div className='itemName'>购物车</div>
                     </NavLink>
@@ -41,7 +41,7 @@ class Footer extends React.Component {
                 <div className='tabItem'>
                     <NavLink to='/my'>
                         <div className='itemIcon'>
-                            <i class="iconfont icon-wode"></i>
+                            <i className="iconfont icon-wode"></i>
                         </div>
                         <div className='itemName'>我的</div>
                     </NavLink>
