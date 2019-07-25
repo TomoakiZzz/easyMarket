@@ -9,7 +9,7 @@ import ShoppingCart from './views/ShoppingCart/ShoppingCart'
 import Special from './views/special/special'
 import 'antd-mobile/dist/antd-mobile.css';
 import "./scss/common.scss"
-
+import rootRouters from "./router/config"
 // 引入mobx
 import { Provider } from 'mobx-react';
 import store from './store'

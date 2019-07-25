@@ -61,7 +61,7 @@ class Home extends React.Component {
                         人气推荐
                     </div>
                     <div className="hotGoodsWrap">
-                        {data.hotGoodsList && data.hotGoodsList.map(item=><Link className="hotGoodsItem" to="goods">
+                        {data.hotGoodsList && data.hotGoodsList.map(item=><Link className="hotGoodsItem" to="goods" key={item.id}>
                             <img src={item.list_pic_url}/>
                             <div className="hotGoodsInfos">
                                 <div className="hotGoodsName">{item.name}</div>
@@ -74,7 +74,9 @@ class Home extends React.Component {
                 </div>
                 <div className="topGoodsBox">
                     <div className="topGoodsTitle">
-
+                        专题精选
+                    </div>
+                    <div className="topGoodsWrap">
                     </div>
                 </div>
                 <Foot/>
