@@ -4,6 +4,7 @@ import "swiper/dist/css/swiper.min.css"
 import Swiper  from "swiper"
 import {inject,observer} from 'mobx-react'
 import {Link} from "react-router-dom"
+import Foot from "../../components/footer/footer"
 @inject("home")
 @observer
 class Home extends React.Component {
@@ -71,6 +72,12 @@ class Home extends React.Component {
                         
                     </div>
                 </div>
+                <div className="topGoodsBox">
+                    <div className="topGoodsTitle">
+
+                    </div>
+                </div>
+                <Foot/>
             </div>
         )
     }
