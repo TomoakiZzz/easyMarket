@@ -16,7 +16,7 @@ class Login extends React.Component {
                         <input placeholder='请输入手机号码'/>
                     </div>
                     <div className='pwd'>
-                        <input placeholder='请输入手机号码'/>
+                        <input type='password' placeholder='请输入手机号码'/>
                     </div>
                     <div className='button'>
                         <button>登录</button>

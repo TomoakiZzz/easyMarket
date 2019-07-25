@@ -17,18 +17,20 @@ body,html,#root{
         }
     }
     .loginMain{
-        padding:1.8rem .4rem 0;
+        padding:1.3rem .4rem 0;
         .phone,.pwd{
             height: 1.8rem;
             display:flex;
             justify-content: center;
             align-items: center;
+            border-bottom: 1px solid #eee;
             input{
                 display: block;
                 height: 80%;
                 border: none;
                 width: 100%;
-                font-size: .4rem
+                font-size: .4rem;
+                line-height: 1.15;
             }
         }
         .button{
