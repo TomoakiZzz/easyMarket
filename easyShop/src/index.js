@@ -5,7 +5,7 @@ import My from "./views/My/my"
 import Login from "./views/login/login"
 import Home from "./views/home/home"
 import 'antd-mobile/dist/antd-mobile.css';
-
+import "./scss/common.scss"
 
 
 // 引入mobx
@@ -20,7 +20,7 @@ ReactDOM.render(<Provider {...store}>
             <Route path='/login' component={Login} />
             <Route path="/my" component={My}/>
             <Route path="/home" component={Home}/>
-            {/* <Redirect from="/" exact to="/home" /> */}
+            <Redirect from="/" exact to="/home" />
         </Switch>
     </BrowserRouter>
 </Provider>, document.getElementById('root'));
