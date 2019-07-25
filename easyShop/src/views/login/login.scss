@@ -1,0 +1,49 @@
+body,html,#root{
+    width: 100%;
+    height: 100%;
+    background:#fff;
+}
+.loginBox{
+    width: 100%;
+    height: 100%;
+    .logo{
+        width: 100%;
+        padding:1rem 0;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 3.2rem;
+        }
+    }
+    .loginMain{
+        padding:1.8rem .4rem 0;
+        .phone,.pwd{
+            height: 1.8rem;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            input{
+                display: block;
+                height: 80%;
+                border: none;
+                width: 100%;
+                font-size: .4rem
+            }
+        }
+        .button{
+            margin-top: 1rem;
+            button{
+                text-align: center;
+                font-size: 18px;
+                height: 47px;
+                line-height: 47px;
+                width: 100%;
+                border:none;
+                border-radius:5px;
+                color: #fff;
+                background-color: #108ee9
+            }
+        }
+    }
+}
