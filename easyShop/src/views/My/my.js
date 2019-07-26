@@ -2,6 +2,8 @@ import React from 'react'
 import './my.scss'
 import Footer from '../../components/footer/footer'
 import {inject,observer} from 'mobx-react'
+import Islogin from '../../utils/isLogin'
+import {removeToken} from '../../utils/index'
 @inject("my")
 @observer
 class My extends React.Component{
@@ -66,11 +68,15 @@ class My extends React.Component{
                             <div>账户安全</div>
                         </div>
                     </div>
-                    <div className='loginOut'>退出登录</div>
+                    <div className='loginOut' onClick={this.click.bind(this)}>退出登录</div>
                 </div>
                 <Footer></Footer>
             </div>
         )
     }
+    click(){
+        removeToken()
+        window.location.reload()
+    }
 }
-export default My
+export default Islogin(My)

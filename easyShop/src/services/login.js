@@ -1,5 +1,9 @@
 import request from '../utils/request';
 
 export function login(params) {
-  return request.post('/auth/loginByMobile', params);
+  let payload = {
+    mobile:Number(params.mobile),
+    password:Number(params.password)
+  }
+  return request.post('/auth/loginByMobile', payload);
 }

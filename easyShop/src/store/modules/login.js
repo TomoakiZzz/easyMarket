@@ -1,12 +1,13 @@
 import { observable, action } from "mobx";
+import {login} from '../../services'
 
-export default class Login{
+class Login{
     // @observable 修饰属性
-    @observable count = 1000;
+    @observable homeData = {};
 
     // @action 修饰方法
-    @action changeCount(type){
-        console.log('type...', type);
-        type==='+'? this.count++: this.count--;
+    @action Login = async (payload)=>{
+        return this.homeData = await login(payload)
     }
 }
+export default Login
