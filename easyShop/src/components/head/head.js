@@ -4,7 +4,7 @@ import "./head.scss"
 import {withRouter} from "react-router-dom"
 class Head extends Component {
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <header className="header">
                 <div className="left" onClick={this.handBack.bind(this)}><i className="iconfont icon-chevron-thin-left"></i></div>

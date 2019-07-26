@@ -1,0 +1,16 @@
+.noTabPageContent {
+    padding-top: 1.04rem;
+    min-height: 100%;
+    .tabWrap {
+        position: fixed;
+        top: 1rem;
+        left: 0;
+        width: 100%;
+        height: auto;
+        z-index: 10;
+        .am-tabs-default-bar-tab {
+            height: .64rem;
+            font-size: .28rem;
+        }
+    }
+}
