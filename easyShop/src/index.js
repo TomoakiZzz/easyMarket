@@ -7,6 +7,7 @@ import Home from "./views/home/home"
 import Classification from './views/classification/classification'
 import ShoppingCart from './views/ShoppingCart/ShoppingCart'
 import Special from './views/special/special'
+import goodsCategory from "./views/goodsCategory/goodsCategory"
 import 'antd-mobile/dist/antd-mobile.css';
 import "./scss/common.scss"
 import rootRouters from "./router/config"
@@ -25,6 +26,7 @@ ReactDOM.render(<Provider {...store}>
             <Route path='/ShoppingCart' component={ShoppingCart} />
             <Route path='/Special' component={Special} />
             <Route path="/home" component={Home}/>
+            <Route path="/categorys/:id" component={goodsCategory}/>
             <Redirect from="/" exact to="/home" />
         </Switch>
     </BrowserRouter>

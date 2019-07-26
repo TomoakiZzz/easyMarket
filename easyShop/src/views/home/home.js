@@ -27,7 +27,7 @@ class Home extends React.Component {
                     <div className="swiper-pagination"></div>
                 </div>
                 <div className="channelWrap">
-                    {data.channel && data.channel.map(item => <Link to="/categorys" key={item.id} className="channelItem">
+                    {data.channel && data.channel.map(item => <Link to={`/categorys/${item.id}`} key={item.id} className="channelItem">
                         <img src={item.icon_url} />
                         <div>{item.name}</div>
                     </Link>)}
@@ -70,7 +70,6 @@ class Home extends React.Component {
                                 <div className="hotGoodsPrice">￥{item.retail_price}</div>
                             </div>
                         </Link>)}
-
                     </div>
                 </div>
                 <div className="topGoodsBox">

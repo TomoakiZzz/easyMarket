@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
-
-export default class Head extends Component {
+import "../../fonts/iconfont.css"
+import "./head.scss"
+import {withRouter} from "react-router-dom"
+class Head extends Component {
     render() {
+        console.log(this.props)
         return (
-            <header>
-                <div><i></i></div>
-                <div></div>
-                <div></div>
+            <header className="header">
+                <div className="left" onClick={this.handBack.bind(this)}><i className="iconfont icon-chevron-thin-left"></i></div>
+                <div className="title">{this.props.headTitle}</div>
+                <div className="right"></div>
             </header>
         )
     }
+    handBack(){
+        this.props.history.go(-1)
+    }
 }
+export default withRouter(Head)
