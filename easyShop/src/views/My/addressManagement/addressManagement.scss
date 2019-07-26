@@ -1,0 +1,29 @@
+.noTabPageContent{
+    padding-top: 1.04rem;
+    min-height: 100%;
+    .addressPage{
+        padding-bottom: 1rem;
+        .addressList{
+            padding-top: 5px;
+            overflow: hidden;
+            background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAKCAMAAADfAc3wAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAYUExURc2AgICg1v///+rw+ffq6tKMjI2p2ouo2QT3I5MAAAA9SURBVCjPpcs5EgAgCARB5ND//9jEYwlZJp1q0ZTNAS3L10OgcGlYlYZNuGoRly3guv2YsA8z9mLKHsxZ3e5sBBsNqhCTAAAAAElFTkSuQmCC) repeat-x;
+            background-size: auto 5px;
+        }
+        .addAddress{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            button{
+                line-height: 1rem; 
+                height: 1rem; 
+                width: 100%; 
+                color: #fff;
+                background-color: #108ee9;
+                display: inline-block;
+                border:0;
+                text-align: center;
+                font-size: 18px;
+            }
+        }
+    }
+}

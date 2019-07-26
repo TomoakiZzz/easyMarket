@@ -1,0 +1,25 @@
+.header, .header>div {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1rem;
+    background: #fff;
+    box-shadow: 0 0.04rem 0.08rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+    z-index: 10;
+    .left,.right{
+        width: .6rem;
+    }
+    .title{
+        flex: 1 1;
+        font-size: .32rem;
+    }
+}

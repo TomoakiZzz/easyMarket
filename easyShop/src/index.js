@@ -8,6 +8,8 @@ import Classification from './views/classification/classification'
 import ShoppingCart from './views/ShoppingCart/ShoppingCart'
 import Special from './views/special/special'
 import MyCollection from './views/My/MyCollection/myCollection'
+import goodsCategory from "./views/goodsCategory/goodsCategory"
+import AddressManagement from './views/My/addressManagement/addressManagement'
 import 'antd-mobile/dist/antd-mobile.css';
 import "./scss/common.scss"
 import rootRouters from "./router/config"
@@ -27,6 +29,8 @@ ReactDOM.render(<Provider {...store}>
             <Route path='/Special' component={Special} />
             <Route path="/home" component={Home}/>
             <Route path="/myCollection" component={MyCollection}/>
+            <Route path="/addressManagement" component={AddressManagement}/>
+            <Route path="/categorys/:id" component={goodsCategory}/>
             <Redirect from="/" exact to="/home" />
         </Switch>
     </BrowserRouter>

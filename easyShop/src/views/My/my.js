@@ -23,7 +23,7 @@ class My extends React.Component{
                             <i className="iconfont icon-gongzuo"  style={{color: "rgba(33, 150, 243)"}}></i>
                             <div>我的收藏</div>
                         </div>
-                        <div style={{color: "rgba(33, 150, 243)"}}>
+                        <div style={{color: "rgba(33, 150, 243)"}} onClick={this.addressManagement.bind(this)}>
                             <i className="iconfont icon-gongzuo"  style={{color: "rgba(33, 150, 243)"}}></i>
                             <div>地址管理</div>
                         </div>
@@ -81,7 +81,10 @@ class My extends React.Component{
     myCollection(){
         let {history} = this.props
         history.push('/myCollection')
-        console.log(this.props)
+    }
+    addressManagement(){
+        let {history} = this.props
+        history.push('/addressManagement')
     }
 }
 export default Islogin(My)

@@ -17,7 +17,7 @@ service.interceptors.request.use(
     // 判断是否有登陆态
     if (getToken()) {
       // 让每个请求携带authorization
-      config.headers['sessionKey'] = getToken()
+      config.headers['x-nideshop-token'] = getToken()
     }
     return config
   },

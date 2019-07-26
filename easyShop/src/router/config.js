@@ -33,6 +33,10 @@ const MyCollection = Loadable({
     loader:() => import ('../views/My/MyCollection/myCollection'),
     loading:Loading
 })
+const AddressManagement = Loadable({
+    loader:() => import ('../views/My/addressManagement/addressManagement'),
+    loading:Loading
+})
 const routers=[
     {
         path:'/home',
@@ -55,6 +59,9 @@ const routers=[
     },{
         path:'/myCollection',
         component:MyCollection
+    },{
+        path:'/addressManagement',
+        component:AddressManagement
     },{
         path:'/',
         redirect:'/home'
