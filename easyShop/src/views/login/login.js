@@ -60,6 +60,7 @@ class Login extends React.Component {
         let { mobile, password } = this.state
         //传参数给modules
         this.props.login.Login({ mobile, password }).then(res => {
+            // console.log(res)
             let {history} = this.props
             if (res.errno === 0) {
                 setToken(res.data.sessionKey)

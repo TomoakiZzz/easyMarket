@@ -19,7 +19,7 @@ class My extends React.Component{
                         </div>
                     </div>
                     <div className='userPower'>
-                        <div style={{color: "rgba(33, 150, 243)"}}>
+                        <div style={{color: "rgba(33, 150, 243)"}} onClick={this.myCollection.bind(this)}>
                             <i className="iconfont icon-gongzuo"  style={{color: "rgba(33, 150, 243)"}}></i>
                             <div>我的收藏</div>
                         </div>
@@ -77,6 +77,11 @@ class My extends React.Component{
     click(){
         removeToken()
         window.location.reload()
+    }
+    myCollection(){
+        let {history} = this.props
+        history.push('/myCollection')
+        console.log(this.props)
     }
 }
 export default Islogin(My)
