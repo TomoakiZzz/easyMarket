@@ -22,7 +22,11 @@ class goodsCategory extends Component {
             <div className="noTabPageContent">
                 <Head headTitle={headTitle} />
                 <div className="tabWrap">
-                    <Tabs tabs={tabs} onTabClick={(tab, index) => this.handTabs(tab, index)} renderTabBar={props => <Tabs.DefaultTabBar {...props} page={5} />}></Tabs>
+                    <Tabs tabs={tabs}
+                        initialPage={this.props.commodity.Navtab.brotherCategory && this.props.commodity.Navtab.brotherCategory.findIndex(item => item.id == this.props.match.params.id)}
+                        onTabClick={(tab, index) => this.handTabs(tab, index)}
+                        renderTabBar={props => <Tabs.DefaultTabBar {...props} page={5} />}>
+                    </Tabs>
                 </div>
                 <div className="categoryDetail">
                     <div>{this.props.commodity.Navtab.currentCategory && this.props.commodity.Navtab.currentCategory.name}</div>

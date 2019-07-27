@@ -37,7 +37,7 @@ class Home extends React.Component {
                         品牌制造商直供
                     </div>
                     <div className="brandWrap">
-                        {data.brandList && data.brandList.map(item => <Link className="brandItem" to="/brandDetail" key={item.id}>
+                        {data.brandList && data.brandList.map(item => <Link className="brandItem" to={`/brandDetail/${item.id}`} key={item.id}>
                             <div className="brandItemName">{item.name}</div>
                             <div className="brandItemMinPrice">{item.floor_price}元起</div>
                             <img src={item.new_pic_url} />
