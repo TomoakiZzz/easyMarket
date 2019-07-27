@@ -13,4 +13,75 @@
             font-size: .28rem;
         }
     }
+    .categoryDetail {
+        padding: .2rem 0;
+        margin-top: .64rem;
+        >div {
+            height: .6rem;
+            line-height: .6rem;
+            text-align: center;
+        }
+        >div:nth-of-type(2){
+            color: grey;
+            height: .5rem;
+            line-height: .5rem;
+            font-size: .28rem;
+        }
+    }
+    .goodsList {
+        width: auto;
+        height: auto;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        .goodsItem{
+            width: 50%;
+            background: #fff;
+            height: auto;
+            padding: .2rem;
+            position: relative;
+            color:#000;
+            .goodsItemImg{
+                width: 100%;
+                min-height: 2rem;
+                height: auto;
+                >img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            .goodsItemName,.goodsItemPrice{
+                text-align: center;
+                font-size: .28rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .goodsItemName{
+                padding-bottom: .3rem;
+                padding-top: .1rem;
+            }
+            .goodsItemPrice{
+                color:red;
+            }
+        }
+        .goodsItem:nth-child(2n):after,.goodsItem:nth-child(odd):after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            width: 200%;
+            height: 200%;
+            -webkit-transform: scale(.5);
+            transform: scale(.5);
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+        }
+        .goodsItem:nth-child(odd):after{
+            border: 1px solid #f5f5f9;
+            border-left-width: 2px;
+        }
+    }
 }
