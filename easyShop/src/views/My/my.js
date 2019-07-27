@@ -2,6 +2,8 @@ import React from 'react'
 import './my.scss'
 import Footer from '../../components/footer/footer'
 import {inject,observer} from 'mobx-react'
+import Islogin from '../../utils/isLogin'
+import {removeToken} from '../../utils/index'
 @inject("my")
 @observer
 class My extends React.Component{
@@ -17,11 +19,11 @@ class My extends React.Component{
                         </div>
                     </div>
                     <div className='userPower'>
-                        <div style={{color: "rgba(33, 150, 243)"}}>
+                        <div style={{color: "rgba(33, 150, 243)"}} onClick={this.myCollection.bind(this)}>
                             <i className="iconfont icon-gongzuo"  style={{color: "rgba(33, 150, 243)"}}></i>
                             <div>我的收藏</div>
                         </div>
-                        <div style={{color: "rgba(33, 150, 243)"}}>
+                        <div style={{color: "rgba(33, 150, 243)"}} onClick={this.addressManagement.bind(this)}>
                             <i className="iconfont icon-gongzuo"  style={{color: "rgba(33, 150, 243)"}}></i>
                             <div>地址管理</div>
                         </div>
@@ -66,11 +68,23 @@ class My extends React.Component{
                             <div>账户安全</div>
                         </div>
                     </div>
-                    <div className='loginOut'>退出登录</div>
+                    <div className='loginOut' onClick={this.click.bind(this)}>退出登录</div>
                 </div>
                 <Footer></Footer>
             </div>
         )
     }
+    click(){
+        removeToken()
+        window.location.reload()
+    }
+    myCollection(){
+        let {history} = this.props
+        history.push('/myCollection')
+    }
+    addressManagement(){
+        let {history} = this.props
+        history.push('/addressManagement')
+    }
 }
-export default My
+export default Islogin(My)
