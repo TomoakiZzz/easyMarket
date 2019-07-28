@@ -1,6 +1,6 @@
 import React from 'react'
 import './login.scss'
-import { List, InputItem } from 'antd-mobile';
+import { List, InputItem} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { inject, observer } from 'mobx-react'
 import { setToken } from "../../utils/index"

@@ -1,11 +1,8 @@
 import React from 'react'
 import './my.scss'
 import Footer from '../../components/footer/footer'
-import {inject,observer} from 'mobx-react'
 import Islogin from '../../utils/isLogin'
 import {removeToken} from '../../utils/index'
-@inject("my")
-@observer
 class My extends React.Component{
     render(){
         return(
