@@ -21,7 +21,7 @@ class commentWrite extends React.Component {
                 <div className="buttons">
                     <div>
                         {textValue.length ? <a role="button" className="am-button am-button-small" aria-disabled="false">
-                            <span>清 空</span>
+                            <span onClick={this.clearComment.bind(this)}>清 空</span>
                         </a> : null}
                     </div>
                     <div>
@@ -49,6 +49,11 @@ class commentWrite extends React.Component {
                 this.props.history.go(-1)
             }
         },1000)
+    }
+    clearComment(){
+        this.setState({
+            textValue:""
+        })
     }
 }
 export default commentWrite
