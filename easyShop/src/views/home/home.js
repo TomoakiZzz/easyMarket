@@ -80,7 +80,7 @@ class Home extends React.Component {
                         <div className="swiper-container topGoodsBan" ref="top_goods_banner">
                             <div className="swiper-wrapper">
                                 {data.topicList && data.topicList.map((item,index) => <div className="swiper-slide" key={item.id}>
-                                    <Link className='topGoodsItem' to="/topicDetail">
+                                    <Link className='topGoodsItem' to={`/topicDetail/${item.id}`}>
                                         <img src={item.item_pic_url} />
                                         <div className="topGoodSubTitle">
                                             {item.title}
