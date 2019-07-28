@@ -18,5 +18,5 @@ export default{
     home,
     myCollection,
     commodity,
-    address
+    address,
 }

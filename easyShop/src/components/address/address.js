@@ -38,7 +38,7 @@ class Address extends Component {
     render() {
         let { flag,name,phone,value,detailed_address } = this.state
         const { getFieldProps, getFieldError } = this.props.form;
-        console.log(district)
+        // console.log(district)
         return (
             <List className='addressSetPage'>
                 <div className='addressHeader'>
@@ -110,10 +110,17 @@ class Address extends Component {
     }
     addAddress(){
         let {name,phone,value,detailed_address,flag} = this.state
+        let num = flag ? 1 : 0
         let payload={
-            name,phone,value,detailed_address,flag
+            name:name,
+            mobile:phone,
+            full_region:value,
+            address:detailed_address,
+            is_default:num
         }
         this.props.address.add_Address(payload)
+        this.props.change(false)
+        this.props.address.get_Address()
     }
 }
 export default createForm()(Address)

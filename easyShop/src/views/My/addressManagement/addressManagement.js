@@ -3,7 +3,10 @@ import './addressManagement.scss'
 import Header from '../../../components/head/head'
 import MyAddress from '../../../components/myAddress/myAddress'
 import Address from '../../../components/address/address'
-export default class AddressManagement extends Component {
+import {inject,observer} from 'mobx-react'
+@inject("address")
+@observer
+class AddressManagement extends Component {
     state={
         headTitle:'地址管理',
         flag:false
@@ -16,7 +19,11 @@ export default class AddressManagement extends Component {
                     {
                         flag ? <Address change={(flags) => {this.setState({flag:flags})}}></Address> : <><Header headTitle={headTitle}></Header>
                         <div className='addressList'>
-                            <MyAddress></MyAddress>
+                            {
+                                this.props.address.GetAddress && this.props.address.GetAddress.map((item) =>{
+                                    return <MyAddress item = {item}></MyAddress>
+                                })
+                            }
                         </div>
                         <div className='addAddress'>
                             <button onClick={this.click.bind(this)}>新增地址</button>
@@ -31,4 +38,8 @@ export default class AddressManagement extends Component {
             flag:true
         })
     }
+    componentDidMount(){
+        this.props.address.get_Address()
+    }
 }
+export default AddressManagement
