@@ -9,7 +9,7 @@ class Special extends React.Component{
     render(){
         return(
             <div className='tabPageContent'>
-                {this.props.special.specialData.data && this.props.special.specialData.data.map(item=><Link className="topicItem" to="/topicDetail" key={item.id}>
+                {this.props.special.specialData.data && this.props.special.specialData.data.map(item=><Link className="topicItem" to={`/topicDetail/${item.id}`} key={item.id}>
                     <img src={item.scene_pic_url}/>
                     <div className="topicItemTitle">{item.title}</div>
                     <div className="topicItemSubtitle">{item.subtitle}</div>

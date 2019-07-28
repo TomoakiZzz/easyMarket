@@ -1,0 +1,51 @@
+.commentList {
+    background: #fff;
+    padding: .2rem;
+    .commentItem {
+        width: 100%;
+        height: auto;
+        position: relative;
+        background: #fff;
+        color: grey;
+        padding-bottom: .1rem;
+        .userInfo {
+            height: .8rem;
+            line-height: .8rem;
+            font-size: .24rem;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            div:first-child {
+                -webkit-flex: 1 1;
+                flex: 1 1;
+                color: #000;
+            }
+            div:nth-child(2) {
+                width: auto;
+            }
+        }
+        .userComment {
+            line-height: .6rem;
+            font-size: .3rem;
+        }
+        .commentPicList {
+            display: -webkit-flex;
+            display: flex;
+        }
+    }
+    .commentItem:after {
+        content: "";
+        width: 200%;
+        height: 1px;
+        position: absolute;
+        bottom: 0;
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        -webkit-transform-origin: 0;
+        transform-origin: 0;
+        background-color: grey;
+    }
+}
