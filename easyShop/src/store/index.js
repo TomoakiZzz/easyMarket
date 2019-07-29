@@ -6,6 +6,7 @@ import MyCollection from './modules/myCollection'
 import BrandDetail from "./modules/brandDetail"
 import Special from "./modules/special"
 import Address from './modules/address'
+import Classification from "./modules/classification"
 // 实例化模块
 const login = new Login
 const home = new Home
@@ -14,6 +15,7 @@ const myCollection = new MyCollection
 const brandDetail = new BrandDetail
 const special = new Special
 const address = new Address
+const classification = new Classification
 export default{
     login,
     home,
@@ -23,4 +25,5 @@ export default{
     special,
     commodity,
     address,
+    classification
 }

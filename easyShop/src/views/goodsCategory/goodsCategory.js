@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Head from "../../components/head/head"
-import { Tabs, WhiteSpace } from 'antd-mobile';
+import { Tabs } from 'antd-mobile';
 import "./goodsCategory.scss"
 import { inject, observer } from 'mobx-react'
 import { Link } from "react-router-dom"
