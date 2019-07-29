@@ -49,7 +49,7 @@ class Home extends React.Component {
                         新品首发
                     </div>
                     <div className="newGoodsWrap">
-                        {data.newGoodsList && data.newGoodsList.map(item => <Link className="newGoodsItem" to="/goods" key={item.id}>
+                        {data.newGoodsList && data.newGoodsList.map(item => <Link className="newGoodsItem" to={`/goods/${item.id}`} key={item.id}>
                             <img src={item.list_pic_url} />
                             <div className="newGoodsName">{item.name}</div>
                             <div className="newGoodsPrice">￥{item.retail_price}</div>
@@ -62,7 +62,7 @@ class Home extends React.Component {
                         人气推荐
                     </div>
                     <div className="hotGoodsWrap">
-                        {data.hotGoodsList && data.hotGoodsList.map(item => <Link className="hotGoodsItem" to="goods" key={item.id}>
+                        {data.hotGoodsList && data.hotGoodsList.map(item => <Link className="hotGoodsItem" to={`goods/${item.id}`} key={item.id}>
                             <img src={item.list_pic_url} />
                             <div className="hotGoodsInfos">
                                 <div className="hotGoodsName">{item.name}</div>
@@ -79,7 +79,7 @@ class Home extends React.Component {
                     <div className="topGoodsWrap">
                         <div className="swiper-container topGoodsBan" ref="top_goods_banner">
                             <div className="swiper-wrapper">
-                                {data.topicList && data.topicList.map((item,index) => <div className="swiper-slide" key={item.id}>
+                                {data.topicList && data.topicList.map((item, index) => <div className="swiper-slide" key={item.id}>
                                     <Link className='topGoodsItem' to={`/topicDetail/${item.id}`}>
                                         <img src={item.item_pic_url} />
                                         <div className="topGoodSubTitle">
@@ -96,7 +96,7 @@ class Home extends React.Component {
                     </div>
                 </div>
                 <div className="cateGoryBox">
-                    {data.categoryList && data.categoryList.map(item=><CateGory goodsData={item} key={item.id}/>)}
+                    {data.categoryList && data.categoryList.map(item => <CateGory goodsData={item} key={item.id} />)}
                 </div>
                 <Foot />
             </div>
@@ -117,9 +117,9 @@ class Home extends React.Component {
             let ban2 = new Swiper(this.refs.top_goods_banner, {
                 loop: true,
                 // slidesPerView : 3, 
-                spaceBetween : 10,
-                slidesPerView : 'auto',
-                slidesOffsetBefore : 28,
+                spaceBetween: 10,
+                slidesPerView: 'auto',
+                slidesOffsetBefore: 28,
             })
         })
 

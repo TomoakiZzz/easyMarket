@@ -7,6 +7,7 @@ import BrandDetail from "./modules/brandDetail"
 import Special from "./modules/special"
 import Address from './modules/address'
 import Classification from "./modules/classification"
+import Goods from "./modules/goods"
 // 实例化模块
 const login = new Login
 const home = new Home
@@ -16,6 +17,7 @@ const brandDetail = new BrandDetail
 const special = new Special
 const address = new Address
 const classification = new Classification
+const goods = new Goods
 export default{
     login,
     home,
@@ -25,5 +27,6 @@ export default{
     special,
     commodity,
     address,
-    classification
+    classification,
+    goods
 }

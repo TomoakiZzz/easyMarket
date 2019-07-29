@@ -34,6 +34,13 @@
         .commentPicList {
             display: -webkit-flex;
             display: flex;
+            img {
+                display: block;
+                width: 100px;
+                height: 100px;
+                box-sizing: initial;
+                margin-right: .1rem;
+            }
         }
     }
     .commentItem:after {

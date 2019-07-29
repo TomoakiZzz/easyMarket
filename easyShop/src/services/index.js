@@ -6,3 +6,4 @@ export * from "./brandDetail"
 export * from "./special"
 export * from './address'
 export * from "./classification"
+export * from "./goods"

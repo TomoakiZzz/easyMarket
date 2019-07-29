@@ -19,7 +19,9 @@ class commentList extends React.Component {
                             <div>{item.add_time}</div>
                         </div>
                         <div className="userComment">{item.content}</div>
-                        <div className="commentPicList"></div>
+                        <div className="commentPicList">
+                        {item.pic_list.map(item => <img src={item.pic_url} key={item.id} />)}
+                        </div>
                     </div>)}
                 </div>
             </div>
@@ -28,7 +30,7 @@ class commentList extends React.Component {
     }
     componentDidMount() {
 
-        this.props.special.getCommentList({ valueId: this.props.match.params.id, page: 1, size: 100, typeId: 1 })
+        this.props.special.getCommentList({ valueId: this.props.match.params.id, page: 1, size: 100, typeId:this.props.match.params.id.length<6 ? 1 : 0 })
     }
 }
 export default commentList
