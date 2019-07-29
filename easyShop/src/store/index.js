@@ -7,6 +7,7 @@ import BrandDetail from "./modules/brandDetail"
 import Special from "./modules/special"
 import Address from './modules/address'
 import ShoppingCart from './modules/shoppingcart'
+import Search from './modules/search'
 // 实例化模块
 const login = new Login
 const home = new Home
@@ -16,6 +17,7 @@ const brandDetail = new BrandDetail
 const special = new Special
 const address = new Address
 const shoppingCart = new ShoppingCart
+const search = new Search
 export default{
     login,
     home,
@@ -25,5 +27,6 @@ export default{
     special,
     commodity,
     address,
-    shoppingCart
+    shoppingCart,
+    search
 }
