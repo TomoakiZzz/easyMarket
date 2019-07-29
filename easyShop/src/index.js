@@ -15,6 +15,7 @@ import topicDetail from "./views/topicDetail/topicDetail"
 import commentList from "./views/topicDetail/commentList/commentList"
 import commentWrite from "./views/topicDetail/commentWrite/commentWrite"
 import goods from "./views/goods/goods"
+import Search from './views/search/search'
 import 'antd-mobile/dist/antd-mobile.css';
 import "./scss/common.scss"
 import rootRouters from "./router/config"
@@ -41,6 +42,7 @@ ReactDOM.render(<Provider {...store}>
             <Route path="/comment/:id" component={commentList}/>
             <Route path="/topicCommentWrite/:id" component={commentWrite}/>
             <Route path="/goods/:id" component={goods}/>
+            <Route path="/search" component={Search}/>
             <Redirect from="/" exact to="/home" />
         </Switch>
     </BrowserRouter>
