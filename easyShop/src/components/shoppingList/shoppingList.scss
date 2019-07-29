@@ -42,4 +42,77 @@
     .cartGoodsNum{
         width: auto;
     }
+    .cartGoodEditWrap{
+        flex: 1 1;
+        min-width: 0;
+        >div{
+            height: 50%;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-left: .2rem;
+        }
+        .cartEditSizeName{
+            font-size: .3rem;
+        }
+        .cartEditNum{
+            height: 50%;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-left: .2rem;
+            .pic{
+                color: red;
+                width: auto;
+            }
+            .count{
+                display: flex;
+                flex: 1 1;
+                flex-direction: row-reverse;
+                .countOp{
+                    width: auto;
+                    display: flex;
+                    >div{
+                        
+                    }
+                    .jian{
+                        width: .6rem;
+                        height: .6rem;
+                        border: 1px solid #dcdcdc;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: .5rem;
+                    }
+                    .num{
+                        min-width: 1rem;
+                        height: .6rem;
+                        padding: 0 .2rem;
+                        font-size: .32rem;
+                        border: 1px solid #dcdcdc;
+                        border-right: none;
+                        border-left: none;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .add{
+                        width: .6rem;
+                        height: .6rem;
+                        border: 1px solid #dcdcdc;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: .5rem;
+                    }
+                }
+            }
+        }
+    }
 }

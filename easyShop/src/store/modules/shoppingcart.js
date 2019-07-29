@@ -1,12 +1,31 @@
 import { observable, action} from "mobx";
-import {} from "../../services/index"
+import {getShopping,checkedShopping} from "../../services/index"
 export default class Home{
     // @observable 修饰属性
-    @observable GetAddress = [];
+    @observable GetShopping = [];
+    @observable GetShoppingNum = {};
+    @observable GetId = [];
+
     // @action 修饰方法
-    @action get_Address = async (params) => {
-        let data = await getAddress(params)
-        console.log(data)
-        this.GetAddress = data.data
+    //获取所有购物车商品
+    @action get_Shopping = async () => {
+        let data = await getShopping()
+        // console.log(data)
+        this.GetShopping = data.data.cartList
+        this.GetShoppingNum = data.data.cartTotal
+        this.GetId = data.data.cartList.map((item) => item.product_id).join(",")
+        // console.log(this.GetId)
+    }
+    //购物车商品是否选中
+    @action checked_Shopping = async (params) => {
+        // console.log(params)
+        let data = await checkedShopping(params)
+        // console.log(data)
+        if(data.errno === 0){
+            let data = await getShopping()
+            this.GetShopping = data.data.cartList
+            this.GetShoppingNum = data.data.cartTotal
+            this.GetId = data.data.cartList.map((item) => item.product_id).join(",")
+        }
     }
 }
