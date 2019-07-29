@@ -9,7 +9,7 @@ export default class goods{
     
     @action getGoodsDetail = async (params)=>{
         let data = await getGoodsDetailData(params)
-        console.log(data.data)
+        console.log(data)
         this.goodsDetailData = data.data
     }
     @action getGoodsRelated = async (params)=>{
@@ -21,6 +21,13 @@ export default class goods{
         let data = await getGoodsCountNum()
         console.log(data)
         this.goodsCounts = data.data.cartTotal.goodsCount
+    }
+    @action addGoodsToShopCar = async (params)=>{
+        let data = await addShopCar(params)
+        let num = await getGoodsCountNum()
+        this.goodsCounts = num.data.cartTotal.goodsCount
+        console.log(data)
+        // this.goodsCounts = data.data.cartTotal.goodsCount
     }
     
 }

@@ -41,9 +41,10 @@ class goods extends Component {
                         <div className="goodsNameTitle">{this.props.goods.goodsDetailData.info && this.props.goods.goodsDetailData.info.name}</div>
                         <div className="goodsNameSubTitle">{this.props.goods.goodsDetailData.info && this.props.goods.goodsDetailData.info.goods_brief}</div>
                         <div className="goodsPriceTitle">￥{this.props.goods.goodsDetailData.info && this.props.goods.goodsDetailData.info.retail_price}</div>
-                        <div className="goodsBrandTitle">
+                         {(this.props.goods.goodsDetailData.brand && this.props.goods.goodsDetailData.brand.name) ? <div className="goodsBrandTitle">
                             <div>{this.props.goods.goodsDetailData.brand && this.props.goods.goodsDetailData.brand.name}</div>
-                        </div>
+                        </div> : null} 
+                        
                     </div>
                     <div className="goodsSize" onClick={this.showModal('modal2')}>
                         <div></div>
@@ -133,7 +134,7 @@ class goods extends Component {
                         <div className="goodsAttributeLine">大家都在看</div>
                     </div>
                     <div className="goodsList">
-                        {this.props.goods.goodsRelated.goodsList && this.props.goods.goodsRelated.goodsList.map(item => <Link className="goodsItem" to="/goods/" key={item.id}>
+                        {this.props.goods.goodsRelated.goodsList && this.props.goods.goodsRelated.goodsList.map(item => <Link className="goodsItem" to={`/goods/${item.id}`} key={item.id}>
                             <div className="goodsItemImg">
                                 <img src={item.list_pic_url} />
                             </div>
@@ -192,7 +193,10 @@ class goods extends Component {
         }
     }
     handAddCar(){
-        
+        this.props.goods.addGoodsToShopCar({
+            goodsId:this.props.match.params.id,
+            number:this.state.count,
+            productId:this.props.goods.goodsDetailData.productList && this.props.goods.goodsDetailData.productList[0].id})
     }
 }
 export default goods
