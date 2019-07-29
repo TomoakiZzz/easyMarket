@@ -145,7 +145,7 @@ class goods extends Component {
                     <div className="goodsPageDo">
                         <div className={`isLike ${isLike ? "like" : ""}`}
                             onClick={this.handLink.bind(this, !isLike)}>{isLike ? '★' : '☆'}</div>
-                        <div className="cartNum"><i className="iconfont icon-gouwuche"><span>{this.props.goods.goodsCounts && this.props.goods.goodsCounts}</span></i></div>
+                        <div className="cartNum" onClick={()=>{this.props.history.push("/ShoppingCart")}}><i className="iconfont icon-gouwuche"><span>{this.props.goods.goodsCounts && this.props.goods.goodsCounts}</span></i></div>
                         <div className="addCart" onClick={this.showModal('modal2')}>加入购物车</div>
                         <div className="payGoods">立即购买</div>
                     </div>
