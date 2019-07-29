@@ -7,8 +7,7 @@ import { inject, observer } from 'mobx-react'
 @observer
 class ShoppingCart extends React.Component {
     state={
-        flag:false,
-        isShow:false,
+        flag:false
     }
     render() {
         let { 
@@ -17,7 +16,7 @@ class ShoppingCart extends React.Component {
             checkedGoodsCount,//被选中的商品数量
             checkedGoodsAmount //被选中的商品总价
         } = this.props.shoppingCart.GetShoppingNum
-        let {flag,isShow} = this.state
+        let {flag} = this.state
         return (
             <>
                 <div className='tabPageContent'>
@@ -42,16 +41,16 @@ class ShoppingCart extends React.Component {
                                 <div className='cartGoodsListWrap'>
                                     {
                                         this.props.shoppingCart.GetShopping && this.props.shoppingCart.GetShopping.map((item) => {
-                                            return <ShoppingList item={item} key={item.id} flag={flag} isShow={isShow}></ShoppingList>
+                                            return <ShoppingList item={item} key={item.id} flag={flag} isShow={item.isShow}></ShoppingList>
                                         })
                                     }
                                 </div>
                                 <div className='cartGoodsDo'>
                                     <div className='isCheckItem'>
                                         {
-                                            flag ? <img src={isShow ? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAAQlBMVEUAAACrKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyvw19exOzv////z4uK1Q0Pt0dGxOjp+CNkCAAAADnRSTlMARVn7B9cVoc/jIWtnJIM++AMAAADUSURBVDjLndRLEoMgEEVRPyCg+FAh+99qYqmAabFL7/hMaKCrN/VWyRZopbJ9ETUaWbq5RLXBX6YmSChcpMRZdRKX6e6kDAqZzAmNYlpEpnCTimfEbfWmhLlnZp8qmLY5a47pVY0oNIWArfV+h5Jy88FsNg2q3JTNRLIK8sd4hTZnwfmzSuVsmRdPFGV+d1S18QjJUQUZB5IcVVBxvMlRBRsvKzmq0JOr9y58yNU/eEj8s3zyyPkvcyQk9wH57/xwOfCrhl9cNMGswdQ4HEt1GKsXfQHGSThPkNi75AAAAABJRU5ErkJggg==' :
+                                            flag ? <img src={this.props.shoppingCart.IsShow ? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAAQlBMVEUAAACrKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyvw19exOzv////z4uK1Q0Pt0dGxOjp+CNkCAAAADnRSTlMARVn7B9cVoc/jIWtnJIM++AMAAADUSURBVDjLndRLEoMgEEVRPyCg+FAh+99qYqmAabFL7/hMaKCrN/VWyRZopbJ9ETUaWbq5RLXBX6YmSChcpMRZdRKX6e6kDAqZzAmNYlpEpnCTimfEbfWmhLlnZp8qmLY5a47pVY0oNIWArfV+h5Jy88FsNg2q3JTNRLIK8sd4hTZnwfmzSuVsmRdPFGV+d1S18QjJUQUZB5IcVVBxvMlRBRsvKzmq0JOr9y58yNU/eEj8s3zyyPkvcyQk9wH57/xwOfCrhl9cNMGswdQ4HEt1GKsXfQHGSThPkNi75AAAAABJRU5ErkJggg==' :
                                             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABCUExURUdwTMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzAV+Z0EAAAAVdFJOUwAJ+KUEFTPay2bzRXdZ7RkhmJ6qJOWhY+QAAAEDSURBVDjLnZTplsIgDIUNWwK2tdt9/1cdxHGmVcAc+dH25Hw0+71cvjhztDIZM4mNc4txo+BwZKxSVwbSFoMn8iFuCeDrG0RLNkc6GGK+ttCZ8gIzuJcgBgPxJ4rB4T2OkM0HjgRyq8V7Y8i/3/V06YVb/nKECa0qBYPffB1jaFd8AD8+RrBrY8R41FkQew2MkPtrR6IeRglzoW1/HrbizfZ9Pv8jCH0slOAm+D7mMeUn4PoYwegxpVNlCsqCKMurbJay9R8GyT0HSTmWeciTYsh7K+MPK1MW0H9eQOU652sqcch+15rUrFQXLpuFy7ksXLYuXDUZbBZ9v4sqiqju34jyD97JD4dkfgo1AAAAAElFTkSuQmCC'}
-                                            onClick={() => this.setState({isShow:!isShow})}/> :
+                                            onClick={this.AllChecked.bind(this,!this.props.shoppingCart.IsShow)}/> :
                                             <img src={goodsCount===checkedGoodsCount ? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAAQlBMVEUAAACrKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyvw19exOzv////z4uK1Q0Pt0dGxOjp+CNkCAAAADnRSTlMARVn7B9cVoc/jIWtnJIM++AMAAADUSURBVDjLndRLEoMgEEVRPyCg+FAh+99qYqmAabFL7/hMaKCrN/VWyRZopbJ9ETUaWbq5RLXBX6YmSChcpMRZdRKX6e6kDAqZzAmNYlpEpnCTimfEbfWmhLlnZp8qmLY5a47pVY0oNIWArfV+h5Jy88FsNg2q3JTNRLIK8sd4hTZnwfmzSuVsmRdPFGV+d1S18QjJUQUZB5IcVVBxvMlRBRsvKzmq0JOr9y58yNU/eEj8s3zyyPkvcyQk9wH57/xwOfCrhl9cNMGswdQ4HEt1GKsXfQHGSThPkNi75AAAAABJRU5ErkJggg==' :
                                             'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABCUExURUdwTMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzAV+Z0EAAAAVdFJOUwAJ+KUEFTPay2bzRXdZ7RkhmJ6qJOWhY+QAAAEDSURBVDjLnZTplsIgDIUNWwK2tdt9/1cdxHGmVcAc+dH25Hw0+71cvjhztDIZM4mNc4txo+BwZKxSVwbSFoMn8iFuCeDrG0RLNkc6GGK+ttCZ8gIzuJcgBgPxJ4rB4T2OkM0HjgRyq8V7Y8i/3/V06YVb/nKECa0qBYPffB1jaFd8AD8+RrBrY8R41FkQew2MkPtrR6IeRglzoW1/HrbizfZ9Pv8jCH0slOAm+D7mMeUn4PoYwegxpVNlCsqCKMurbJay9R8GyT0HSTmWeciTYsh7K+MPK1MW0H9eQOU652sqcch+15rUrFQXLpuFy7ksXLYuXDUZbBZ9v4sqiqju34jyD97JD4dkfgo1AAAAAElFTkSuQmCC'}
                                             onClick={this.allChecked.bind(this)}/>
@@ -59,9 +58,8 @@ class ShoppingCart extends React.Component {
                                     </div>
                                     <div className='cartMsgAll'>
                                         {
-                                            flag ? <>已选(0)</> : <>已选({checkedGoodsCount}) ￥{checkedGoodsAmount}</>
+                                            flag ? <>已选({this.props.shoppingCart.edit_All.length})</> : <>已选({checkedGoodsCount}) ￥{checkedGoodsAmount}</>
                                         }
-                                        
                                     </div>
                                     <div className='cartAllDoButton'>
                                     {
@@ -69,7 +67,7 @@ class ShoppingCart extends React.Component {
                                         <span onClick={() => this.setState({flag:true})}>编辑</span>
                                     }
                                     </div>
-                                    <div className='cartAllDoButton pay'>{flag ? '删除所选' : '下单'}</div>
+                                    <div className='cartAllDoButton pay'>{flag ? <span onClick={this.delData.bind(this)}>删除所选</span> : <span>下单</span>}</div>
                                 </div>
                             </> : <>
                                     <div className='cartGoodsListWrap'></div>
@@ -94,6 +92,16 @@ class ShoppingCart extends React.Component {
             productIds:this.props.shoppingCart.GetId
         }
         this.props.shoppingCart.checked_Shopping(obj)
+    }
+    //编辑全选
+    AllChecked(show){
+        this.props.shoppingCart.allChecked(show)
+    }
+    //删除
+    delData(){
+        let delId = this.props.shoppingCart.edit_All.map((item) => item.product_id).join(',')
+        this.props.shoppingCart.del_All({productIds:delId})
+        this.setState({flag:false})
     }
 }
 export default ShoppingCart
