@@ -178,6 +178,7 @@ class Address extends Component {
         //     value = createForm.getFieldProps.initialValue
         // }
         let values = value.join(',')
+        
         console.log(values)
         let payload={
             address: detailed_address,//详细地址
