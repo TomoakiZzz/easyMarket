@@ -33,7 +33,7 @@ class goodsCategory extends Component {
                     <div>{this.props.commodity.Navtab.currentCategory && this.props.commodity.Navtab.currentCategory.front_name}</div>
                 </div>
                 <div className="goodsList">
-                    {this.props.commodity.goodsLists.goodsList && this.props.commodity.goodsLists.goodsList.map(item => <Link className="goodsItem" to="/goods" key={item.id}>
+                    {this.props.commodity.goodsLists.goodsList && this.props.commodity.goodsLists.goodsList.map(item => <Link className="goodsItem" to={`/goods/${item.id}`} key={item.id}>
                         <div className="goodsItemImg">
                             <img src={item.list_pic_url} />
                         </div>

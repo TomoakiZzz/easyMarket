@@ -15,7 +15,7 @@ class Classification extends React.Component {
         return (
             <div className='tabPageContent'>
                 <div className='searchWrap'>
-                    <div className="searchInput">
+                    <div className="searchInput" onClick={()=>{this.props.history.push("/search")}}>
                         <i className="fa fa-search"></i>
                         <span>搜索商品，共{this.props.classification.goodsCount}款好物</span>
                     </div>
