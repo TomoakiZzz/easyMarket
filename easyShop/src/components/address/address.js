@@ -179,7 +179,7 @@ class Address extends Component {
         // }
         let values = value.join(',')
 
-        console.log(values)
+        // console.log(values)
         let payload={
             address: detailed_address,//详细地址
             city_id: values[1],//市
