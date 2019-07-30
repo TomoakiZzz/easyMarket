@@ -7,9 +7,7 @@ export default class Home{
 
     // @action 修饰方法
     @action add_Address = async (params)=>{
-        console.log(params)
         let data = await addAddress(params)
-        console.log(data)
         if(data.errno===0){
             let data = await getAddress()
             this.GetAddress = data.data
