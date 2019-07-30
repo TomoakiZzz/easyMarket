@@ -9,19 +9,21 @@ import {inject,observer} from 'mobx-react'
 class AddressManagement extends Component {
     state={
         headTitle:'地址管理',
-        flag:false
+        flag:false,
+        item:null,
+        num:1
     }
     render() {
-        let {headTitle,flag}= this.state
+        let {headTitle,flag,item,num}= this.state
         return (
             <div className='noTabPageContent'>
                 <div className='addressPage'>
                     {
-                        flag ? <Address change={(flags) => {this.setState({flag:flags})}}></Address> : <><Header headTitle={headTitle}></Header>
+                        flag ? <Address change={(flags) => {this.setState({flag:flags})}} item = {item} num={num}></Address> : <><Header headTitle={headTitle}></Header>
                         <div className='addressList'>
                             {
                                 this.props.address.GetAddress && this.props.address.GetAddress.map((item) =>{
-                                    return <MyAddress item = {item} key={item.id}></MyAddress>
+                                    return <MyAddress item = {item} key={item.id} changes={(obj) => {this.setState({flag:obj.flag,item:obj.item,num:obj.num})}}></MyAddress>
                                 })
                             }
                         </div>
@@ -35,7 +37,8 @@ class AddressManagement extends Component {
     }
     click(){
         this.setState({
-            flag:true
+            flag:true,
+            num:1
         })
     }
     componentDidMount(){

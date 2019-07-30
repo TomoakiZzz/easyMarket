@@ -1,49 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom'
-import My from "./views/My/my"
-import Login from "./views/login/login"
-import Home from "./views/home/home"
-import Classification from './views/classification/classification'
-import ShoppingCart from './views/ShoppingCart/ShoppingCart'
-import Special from './views/special/special'
-import MyCollection from './views/My/MyCollection/myCollection'
-import goodsCategory from "./views/goodsCategory/goodsCategory"
-import AddressManagement from './views/My/addressManagement/addressManagement'
-import brandDetail from "./views/brandDetail/brandDetail"
-import topicDetail from "./views/topicDetail/topicDetail"
-import commentList from "./views/topicDetail/commentList/commentList"
-import commentWrite from "./views/topicDetail/commentWrite/commentWrite"
-import goods from "./views/goods/goods"
+//import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom'
 import Search from './views/search/search'
 import 'antd-mobile/dist/antd-mobile.css';
 import "./scss/common.scss"
-import rootRouters from "./router/config"
 // 引入mobx
 import { Provider } from 'mobx-react';
 import store from './store'
-
-
+// 引入路由
+import {BrowserRouter} from 'react-router-dom';
+import RouterView from './router/RouterView';
+import routers from './router/config';
+// 引入fastClick，解决300ms延迟
+var FastClick = require('fastclick');
+FastClick.attach(document.body);
 
 ReactDOM.render(<Provider {...store}>
-    <BrowserRouter>
+    {/* <BrowserRouter>
         <Switch>
-            <Route path='/login' component={Login} />
-            <Route path='/my' component={My} />
-            <Route path='/Classification' component={Classification} />
-            <Route path='/ShoppingCart' component={ShoppingCart} />
-            <Route path='/Special' component={Special} />
-            <Route path="/home" component={Home}/>
-            <Route path="/myCollection" component={MyCollection}/>
-            <Route path="/addressManagement" component={AddressManagement}/>
-            <Route path="/categorys/:id" component={goodsCategory}/>
-            <Route path="/brandDetail/:id" component={brandDetail}/>
-            <Route path="/topicDetail/:id" component={topicDetail}/>
-            <Route path="/comment/:id" component={commentList}/>
-            <Route path="/topicCommentWrite/:id" component={commentWrite}/>
-            <Route path="/goods/:id" component={goods}/>
             <Route path="/search" component={Search}/>
             <Redirect from="/" exact to="/home" />
         </Switch>
-    </BrowserRouter>
+    </BrowserRouter> */}
+    <React.Fragment>
+        <BrowserRouter>
+            <RouterView routes={routers}></RouterView>
+        </BrowserRouter>
+    </React.Fragment>
 </Provider>, document.getElementById('root'));

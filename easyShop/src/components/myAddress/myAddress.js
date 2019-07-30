@@ -5,18 +5,22 @@ import {inject,observer} from 'mobx-react'
 @observer
 class MyAddress extends Component {
     state = {
-        flag: false
+        flag: false,
+        num:0
     }
     render() {
         let { item } = this.props
-        let { flag } = this.state
+        let { flag,num } = this.state
+        // console.log(item)
         return (
             <>
                 <div className='addressItem'>
                     <div className={item.is_default === 1 ? "isChooseAddress" : null}></div>
                     <div className='addressMsg'>
                         <div className='concatName'>{item.name}</div>
-                        <div className='addressDetail'>
+                        <div className='addressDetail' onClick={() => {
+                            this.props.changes({flag:true,item:item,num:num})
+                        }}>
                             <div className='concatPhone'>{item.mobile}</div>
                             <div className='concatAddress'>{item.full_region}</div>
                             <div className='concatAddress'>{item.address}</div>
