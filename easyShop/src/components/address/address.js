@@ -180,15 +180,15 @@ class Address extends Component {
         let values = value.join(',')
 
         console.log(values)
-        // let payload={
-        //     address: detailed_address,//详细地址
-        //     city_id: values[1],//市
-        //     district_id: values[2],//区
-        //     is_default: flag,//是否默认
-        //     mobile: phone,//电话
-        //     name: name,//名字
-        //     province_id: values[0]//省份
-        // }
+        let payload={
+            address: detailed_address,//详细地址
+            city_id: values[1],//市
+            district_id: values[2],//区
+            is_default: flag,//是否默认
+            mobile: phone,//电话
+            name: name,//名字
+            province_id: values[0]//省份
+        }
         this.props.address.add_Address(payload)
         this.props.change(false)
         this.props.address.get_Address()
