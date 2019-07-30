@@ -1,12 +1,14 @@
 import { observable, action } from "mobx";
-import {getData} from "../../services/index"
+import {getCollectData} from "../../services/index"
 export default class myCollection{
     // @observable 修饰属性
-    @observable data = {};
+    @observable CollectData = [];
 
     // @action 修饰方法
     
-    @action getDefaultData = async (payload)=>{
-        // return this.data = await getData(payload)
+    @action getMyCollect = async (params)=>{
+        let data = await getCollectData(params)
+        this.CollectData=data.data
+        console.log(data)
     }
 }

@@ -12,24 +12,22 @@ class MyCollection extends Component {
     }
     render() {
         let {headTitle}= this.state
+        console.log(this.props.myCollection.CollectData)
         return (
             <div className='noTabPageContent'>
                 <div className='collect'>
                     <Header headTitle={headTitle}></Header>
                     <div className='collectList'>
-                        <MyList></MyList>
+                        
+                        {this.props.myCollection.CollectData && this.props.myCollection.CollectData.map(item=><MyList item={item} key={item.id}></MyList>)}
                     </div>
                 </div>
             </div>
         )
     }
     componentDidMount() {
-        let {typeId} = this.state
-        // console.log(this.props.myCollection.getDefaultData())
-        // this.props.myCollection.getDefaultData(typeId).then(res => {
-        //     // this.setState({ data: res.data });
-        //     console.log(res)
-        // })
+        this.props.myCollection.getMyCollect({typeId:0,size:1000})
+        
 
     }
 }

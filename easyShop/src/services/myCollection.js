@@ -1,4 +1,4 @@
 import request from "../utils/request";
-export function getData(payload){
-    return request.get(`/collect/list?typeId=${payload}`)
+export function getCollectData(params){
+    return request.get("/collect/list",{params})
 }
