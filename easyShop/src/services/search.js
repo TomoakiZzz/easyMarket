@@ -8,3 +8,6 @@ export function clearSearchHistory() {
 export function searchGoodsLists(params) {
   return request.get('/goods/list',{params});
 }
+export function fuzzySearch (params) {
+  return request.get('/search/helper',{params});
+}

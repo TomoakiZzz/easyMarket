@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import { defaultSearch, clearSearchHistory ,searchGoodsLists} from "../../services/index"
+import { defaultSearch, clearSearchHistory ,searchGoodsLists,fuzzySearch} from "../../services/index"
 import { clear } from "sisteransi";
 export default class Search {
     // @observable 修饰属性
@@ -25,7 +25,10 @@ export default class Search {
             let data = await defaultSearch()
             this.searchHistory = data.data
         }
-        console.log(data)
-        
+        console.log(data) 
+    }
+    @action searchHelper = async (params) => {
+        let data = await fuzzySearch(params)
+        console.log(data) 
     }
 }
