@@ -32,6 +32,12 @@
                     overflow: hidden;
                     text-overflow: ellipsis;
                 }
+                div:nth-child(2) {
+                    color: #a9a9a9;
+                }
+                div:nth-child(3) {
+                    color: red;
+                }
             }
         }
         .onePx_bottom{

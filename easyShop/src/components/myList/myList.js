@@ -2,15 +2,17 @@ import React, { Component } from 'react'
 import './myList.scss'
 export default class MyList extends Component {
     render() {
+        let {item} = this.props
+        console.log(item)
         return (
             <div className='touchClear'>
                 <div className='test'>
                     <div className='collectItem onePx_bottom'>
-                        <img src='http://yanxuan.nosdn.127.net/9126151f028a8804026d530836b481cb.png' className='collectImg'/>
+                        <img src={item.list_pic_url} className='collectImg'/>
                         <div className='collectMsg'>
-                            <div>日式素雅纯色流星纹窗帘</div>
-                            <div>日式素雅纯色流星纹窗帘</div>
-                            <div>￥299</div>
+                            <div>{item.name}</div>
+                            <div>{item.goods_brief}</div>
+                            <div>￥{item.retail_price}</div>
                         </div>
                     </div>
                 </div>

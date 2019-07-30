@@ -27,7 +27,6 @@ class brandDetail extends Component {
                                 <div className="goodsItemName">{item.name}</div>
                                 <div className="goodsItemPrice">￥{item.retail_price}元</div>
                             </Link>)}
-                            
                         </div>
                     </div>
                 </div>
