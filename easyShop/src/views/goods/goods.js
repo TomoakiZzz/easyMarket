@@ -153,6 +153,7 @@ class goods extends Component {
             </div>
         )
     }
+    
     componentDidMount() {
         let This = this
         async function init(This) {
@@ -184,6 +185,7 @@ class goods extends Component {
     }
     handLink(flag) {
         this.setState({ isLike: flag })
+        this.props.goods.setAddOrDelete({typeId:0,valueId:this.props.match.params.id})
     }
     handGoodsCount(num, stat) {
         if (stat === 0 && num >= 0) {

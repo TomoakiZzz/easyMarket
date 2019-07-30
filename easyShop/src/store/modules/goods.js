@@ -1,5 +1,5 @@
 import { observable, action} from "mobx";
-import {getGoodsDetailData,getGoodsRelateds,getGoodsCountNum,addShopCar} from "../../services/index"
+import {getGoodsDetailData,getGoodsRelateds,getGoodsCountNum,addShopCar,addOrDelete} from "../../services/index"
 export default class goods{
     // @observable 修饰属性
     @observable goodsDetailData = {};
@@ -27,7 +27,10 @@ export default class goods{
         let num = await getGoodsCountNum()
         this.goodsCounts = num.data.cartTotal.goodsCount
         console.log(data)
-        // this.goodsCounts = data.data.cartTotal.goodsCount
+    }
+    @action setAddOrDelete = async (params)=>{
+        let data = await addOrDelete(params)
+        console.log(data)
     }
     
 }

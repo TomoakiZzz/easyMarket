@@ -11,3 +11,6 @@ export function getGoodsCountNum(){
 export function addShopCar(params){
     return request.post("/cart/add",params)
 }
+export function addOrDelete(params){
+    return request.post("/collect/addordelete",params)
+}

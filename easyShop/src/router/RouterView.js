@@ -9,7 +9,6 @@ export default props=>{
           if (item.redirect){
             return <Redirect to={item.redirect}/>
           }
-
           // 判断是否登陆
           // return <Redirect to="/login"/>
 
