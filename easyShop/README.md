@@ -34,7 +34,7 @@
 ## EasyMarket Tips
 
 > - EasyMarket 正在更新维护状态，部分功能尚未没完成。
-> - 倘若您发现 Bug 或者有优化意见及其他宝贵意见，欢迎您提交 issue 或者联系我 qq = 1025558554 、Email = 1025558554@qq.com
+> - 倘若您发现 Bug 或者有优化意见及其他宝贵意见，欢迎您提交 issue 或者联系我 qq = 799770735 、Email = 799770735@qq.com
 > - EasyMarket 服务端 ，请移步至 [EasyMarketSever](https://github.com/Peroluo/easyMarketSever)。
 
 ## EasyMarket 未完成功能
