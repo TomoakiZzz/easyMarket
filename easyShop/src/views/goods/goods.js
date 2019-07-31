@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 import { Modal, List, Button, WhiteSpace, WingBlank, Icon } from 'antd-mobile';
 @inject("goods")
 @observer
-class goods extends Component {
+class Goods extends Component {
     state = {
         modal1: false,
         modal2: false,
@@ -201,4 +201,4 @@ class goods extends Component {
             productId:this.props.goods.goodsDetailData.productList && this.props.goods.goodsDetailData.productList[0].id})
     }
 }
-export default goods
+export default (props)=><Goods {...props} key={props.location.pathname}/>

@@ -16,7 +16,7 @@ class commentWrite extends React.Component {
                 <Head headTitle={this.state.headTitle} />
                 <div className="textAreaContent">
                     <textarea className="inputArea" maxLength='80' value={textValue} onChange={this.writeComment.bind(this)}></textarea>
-                    <span>{textValue.length}/80</span>
+                    <span className={textValue.length===80 ? 'active' : ''}>{textValue.length}/80</span>
                 </div>
                 <div className="buttons">
                     <div>
@@ -43,12 +43,15 @@ class commentWrite extends React.Component {
         console.log(e.target.value)
     }
     submitComment(){
-        this.props.special.writeCommentList({content:this.state.textValue, typeId: 1, valueId:this.props.match.params.id})
-        setTimeout(()=>{
-            if(this.props.special.code){
-                this.props.history.go(-1)
-            }
-        },1000)
+        if(this.state.textValue){
+            this.props.special.writeCommentList({content:this.state.textValue, typeId: 1, valueId:this.props.match.params.id})
+            setTimeout(()=>{
+                if(this.props.special.code){
+                    this.props.history.go(-1)
+                }
+            },1000)
+        }
+        
     }
     clearComment(){
         this.setState({

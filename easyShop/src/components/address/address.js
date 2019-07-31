@@ -5,8 +5,16 @@ import { createForm } from 'rc-form';
 import { district } from 'antd-mobile-demo-data';
 import { inject, observer } from 'mobx-react'
 let city = require('../../components/nideshop_region (1).json')
-console.log(city)
-// let district = city[2].data
+city.map((item)=>{
+    item.value=item.id
+    item.label = item.name
+    item.children=[]
+    city.map(el=>{
+        if(item.id===el.parent_id){
+            item.children.push(el)
+        }
+    })
+})
 @inject("address")
 @observer
 class Address extends Component {
@@ -34,9 +42,13 @@ class Address extends Component {
         });
     }
     render() {
+        // let idArr = []
+        // let parent_idArr = []
         let { flag, name, phone, detailed_address } = this.state
         const { getFieldProps } = this.props.form;
+        
 
+        console.log(this.state.value)
         return (
             <>
                 {
@@ -67,9 +79,9 @@ class Address extends Component {
                             ></InputItem>
                         </div>
                         <div className='onePx_bottom'>
-                            <Picker data={district}
+                            <Picker data={city}
                                 {...getFieldProps('district', {
-                                    initialValue: ['340000', '341500', '341502']
+                                    initialValue: ['5', '50', '630']
                                 })}
                                 className='chooseAddress'
                                 // this.setState({value:initialValue})
@@ -130,9 +142,9 @@ class Address extends Component {
                                 ></InputItem>
                             </div>
                             <div className='onePx_bottom'>
-                                <Picker data={district}
+                                <Picker data={city}
                                     {...getFieldProps('district', {
-                                        initialValue: ['340000', '341500', '341502']
+                                        initialValue: this.state.value && this.state.value
                                     })}
                                     className='chooseAddress'
                                     onOk={e => this.setState({value:e})}
@@ -176,30 +188,28 @@ class Address extends Component {
     addAddress() {
         if (this.props.num === 1) {
             let { name, phone, value, detailed_address, flag } = this.state
-            let values = value.join(',')
             let payload = {
                 address: detailed_address,//详细地址
-                city_id: values[1],//市
-                district_id: values[2],//区
+                city_id: value[1],//市
+                district_id: value[2],//区
                 is_default: flag,//是否默认
                 mobile: phone,//电话
                 name: name,//名字
-                province_id: values[0]//省份
+                province_id: value[0]//省份
             }
             this.props.address.add_Address(payload)
             this.props.change(false)
             this.props.address.get_Address()
         } else if (this.props.num === 0) {
             let { name, phone, value, detailed_address, flag } = this.state
-            let values = value.join(',')
             let payload = {
                 address: detailed_address,//详细地址
-                city_id: values[1],//市
-                district_id: values[2],//区
+                city_id: value[1],//市
+                district_id: value[2],//区
                 is_default: flag,//是否默认
                 mobile: phone,//电话
                 name: name,//名字
-                province_id: values[0],//省份
+                province_id: value[0],//省份
                 id: this.props.item.id
             }
             this.props.address.add_Address(payload)
@@ -215,7 +225,8 @@ class Address extends Component {
                 flag: Boolean(this.props.item.is_default),
                 name: this.props.item.name,
                 phone: this.props.item.mobile,
-                detailed_address: this.props.item.address
+                detailed_address: this.props.item.address,
+                value:[`${this.props.item.province_id}`,`${this.props.item.city_id}`,`${this.props.item.district_id}`]
             })
         }
     }

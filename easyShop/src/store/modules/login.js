@@ -7,7 +7,12 @@ class Login{
 
     // @action 修饰方法
     @action Login = async (payload)=>{
-        return this.homeData = await login(payload)
+        let data = await login(payload)
+        console.log(data)
+        if(data.errno===0){
+            window.localStorage.setItem("userName",data.data.mobile)
+        }
+        this.homeData = data
     }
 }
 export default Login

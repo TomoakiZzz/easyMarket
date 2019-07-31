@@ -15,22 +15,23 @@
         >a.active{
             color: #2196f3;
             font-weight: bolder;
+            .iconfont{
+                animation: big 2s linear infinite;
+            }
         }
+        
         .itemIcon{
             line-height: .6rem;
             text-align: center;
             font-size: .44rem;
-            transition: all .5s ease-in-out;
             .iconfont{
                 font-family: "iconfont" !important;
                 font-size: 16px;
                 font-style: normal;
                 -webkit-font-smoothing: antialiased;
             }
+
         }
-        // .activeIcon{
-        //     animation: bounceTo .5s;
-        // }
         .itemName{
             height: 35%;
             text-align: center;
@@ -41,4 +42,9 @@
         }
     }
     
+}
+@keyframes big{
+    0%{transform: scale(1,1)}
+    50%{transform: scale(1.5,1.5)}
+    100%{transform: scale(1,1)}
 }

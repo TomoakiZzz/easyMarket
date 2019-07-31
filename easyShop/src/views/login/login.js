@@ -58,15 +58,17 @@ class Login extends React.Component {
     }
     click() {
         let { mobile, password } = this.state
+        let {history} = this.props
+        let This =this
         //传参数给modules
-        this.props.login.Login({ mobile, password }).then(res => {
-            // console.log(res)
-            let { history } = this.props
-            if (res.errno === 0) {
-                setToken(res.data.sessionKey)
+        async function init(This){
+            await This.props.login.Login({ mobile, password })
+            if ((This.props.login.homeData && This.props.login.homeData.errno) ===0 ) {
+                setToken(This.props.login.homeData.data && This.props.login.homeData.data.sessionKey)
                 history.push('/home')
             }
-        })
+        }
+        init(This)
     }
 }
 export default createForm()(Login)
