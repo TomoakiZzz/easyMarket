@@ -9,7 +9,7 @@ export function checkedShopping(params) {
 }
 //删除商品
 export function delAll(params) {
-  return request.post('cart/delete',params);
+  return request.post('/cart/delete',params);
 }
 //更新商品数量
 export function upCount(params) {

@@ -6,6 +6,10 @@ import { Link } from "react-router-dom"
 import Foot from "../../components/footer/footer"
 import CateGory from "../../components/cateGory/cateGory"
 import "swiper/dist/css/swiper.min.css"
+import LazyLoad from 'react-lazyload';
+{/* <LazyLoad height={200}>
+    <img src="http://mi.hqyj.com/uploads/allimg/170420/13130Q011-0.gif" />
+</LazyLoad> */}
 @inject("home")
 @observer
 class Home extends React.Component {
@@ -14,7 +18,6 @@ class Home extends React.Component {
     }
 
     render() {
-        console.log(this.state.data)
         let { data } = this.state
         return (
             <div className='home'>
