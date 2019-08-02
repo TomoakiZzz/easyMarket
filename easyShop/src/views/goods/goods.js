@@ -6,7 +6,7 @@ import "swiper/dist/css/swiper.min.css"
 import "./goods.scss"
 import "../../fonts/iconfont.css"
 import { Link } from "react-router-dom"
-import { Modal, List, Button, WhiteSpace, WingBlank, Icon } from 'antd-mobile';
+import { Modal } from 'antd-mobile';
 @inject("goods")
 @observer
 class Goods extends Component {
@@ -17,7 +17,9 @@ class Goods extends Component {
         count: 0
     };
     render() {
+        console.log(this.props.location.pathname)
         let { isLike, count } = this.state
+        let {userHasCollect} = this.props.goods.goodsDetailData
         return (
             <div className="noTabPageContent">
                 <div className="goodsPage">
@@ -143,8 +145,8 @@ class Goods extends Component {
                         </Link>)}
                     </div>
                     <div className="goodsPageDo">
-                        <div className={`isLike ${isLike ? "like" : ""}`}
-                            onClick={this.handLink.bind(this, !isLike)}>{isLike ? '★' : '☆'}</div>
+                        <div className={`isLike ${ userHasCollect && (userHasCollect===1) ? "like" : ""}`}
+                            onClick={this.handLink.bind(this)}>{ userHasCollect && (userHasCollect===1)  ? '★' : '☆'}</div>
                         <div className="cartNum" onClick={()=>{this.props.history.push("/ShoppingCart")}}><i className="iconfont icon-gouwuche"><span>{this.props.goods.goodsCounts && this.props.goods.goodsCounts}</span></i></div>
                         <div className="addCart" onClick={this.showModal('modal2')}>加入购物车</div>
                         <div className="payGoods">立即购买</div>
@@ -184,7 +186,7 @@ class Goods extends Component {
         });
     }
     handLink(flag) {
-        this.setState({ isLike: flag })
+        // this.setState({ isLike: flag })
         this.props.goods.setAddOrDelete({typeId:0,valueId:this.props.match.params.id})
     }
     handGoodsCount(num, stat) {

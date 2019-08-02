@@ -30,6 +30,9 @@ export default class goods{
     }
     @action setAddOrDelete = async (params)=>{
         let data = await addOrDelete(params)
+        if(data.errno===0){
+            await this.getGoodsDetail({id:params.valueId})
+        }
         console.log(data)
     }
     

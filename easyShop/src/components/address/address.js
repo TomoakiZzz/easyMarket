@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './address.scss'
 import { List, InputItem, Picker } from 'antd-mobile';
 import { createForm } from 'rc-form';
-import { district } from 'antd-mobile-demo-data';
 import { inject, observer } from 'mobx-react'
 let city = require('../../components/nideshop_region (1).json')
 city.map((item)=>{

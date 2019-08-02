@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import {getCollectData} from "../../services/index"
+import {getCollectData,closeLike} from "../../services/index"
 export default class myCollection{
     // @observable 修饰属性
     @observable CollectData = [];
@@ -10,5 +10,12 @@ export default class myCollection{
         let data = await getCollectData(params)
         this.CollectData=data.data
         console.log(data)
+    }
+    @action deleteLike = async (params) =>{
+        let data = await closeLike(params)
+        if(data.errno === 0 ){
+            let data = await getCollectData(params)
+            this.CollectData=data.data 
+        }
     }
 }

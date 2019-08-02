@@ -6,12 +6,11 @@ import { Link } from "react-router-dom"
 import Foot from "../../components/footer/footer"
 import CateGory from "../../components/cateGory/cateGory"
 import "swiper/dist/css/swiper.min.css"
-import LazyLoad from 'react-lazyload';
-{/* <LazyLoad height={200}>
-    <img src="http://mi.hqyj.com/uploads/allimg/170420/13130Q011-0.gif" />
-</LazyLoad> */}
+import LazyLoad from "../../components/lazyLoad/lazyLoad"
+const loading = require("../../utils/loading.jpg")
 @inject("home")
 @observer
+
 class Home extends React.Component {
     state = {
         data: {}
@@ -24,14 +23,14 @@ class Home extends React.Component {
                 <div className="swiper-container banner" ref="home_ban">
                     <div className="swiper-wrapper">
                         {data.banner && data.banner.map(item => <div className="swiper-slide" key={item.id}>
-                            <img src={item.image_url} />
+                            <img src={item.image_url} data-src={loading} className="imgLazyload" alt="imgLazyload"/>
                         </div>)}
                     </div>
                     <div className="swiper-pagination"></div>
                 </div>
                 <div className="channelWrap">
                     {data.channel && data.channel.map(item => <Link to={`/categorys/${item.id}`} key={item.id} className="channelItem">
-                        <img src={item.icon_url} />
+                        <img src={item.icon_url} data-src={loading} className="imgLazyload" alt="imgLazyload"/>
                         <div>{item.name}</div>
                     </Link>)}
                 </div>
@@ -43,7 +42,7 @@ class Home extends React.Component {
                         {data.brandList && data.brandList.map(item => <Link className="brandItem" to={`/brandDetail/${item.id}`} key={item.id}>
                             <div className="brandItemName">{item.name}</div>
                             <div className="brandItemMinPrice">{item.floor_price}元起</div>
-                            <img src={item.new_pic_url} />
+                            <img src={item.new_pic_url} data-src={loading} className="imgLazyload" alt="imgLazyload"/>
                         </Link>)}
                     </div>
                 </div>
@@ -53,7 +52,7 @@ class Home extends React.Component {
                     </div>
                     <div className="newGoodsWrap">
                         {data.newGoodsList && data.newGoodsList.map(item => <Link className="newGoodsItem" to={`/goods/${item.id}`} key={item.id}>
-                            <img src={item.list_pic_url} />
+                            <img src={item.list_pic_url} data-src={loading} className="imgLazyload" alt="imgLazyload"/>
                             <div className="newGoodsName">{item.name}</div>
                             <div className="newGoodsPrice">￥{item.retail_price}</div>
                         </Link>)}
@@ -66,7 +65,7 @@ class Home extends React.Component {
                     </div>
                     <div className="hotGoodsWrap">
                         {data.hotGoodsList && data.hotGoodsList.map(item => <Link className="hotGoodsItem" to={`goods/${item.id}`} key={item.id}>
-                            <img src={item.list_pic_url} />
+                            <img src={item.list_pic_url} data-src={loading} className="imgLazyload" alt="imgLazyload"/>
                             <div className="hotGoodsInfos">
                                 <div className="hotGoodsName">{item.name}</div>
                                 <div className="hotGoodsInfo">{item.goods_brief}</div>
@@ -84,7 +83,7 @@ class Home extends React.Component {
                             <div className="swiper-wrapper">
                                 {data.topicList && data.topicList.map((item, index) => <div className="swiper-slide" key={item.id}>
                                     <Link className='topGoodsItem' to={`/topicDetail/${item.id}`}>
-                                        <img src={item.item_pic_url} />
+                                        <img src={item.item_pic_url} data-src={loading} className="imgLazyload" alt="imgLazyload"/>
                                         <div className="topGoodSubTitle">
                                             {item.title}
                                             <span className="topGoodPrice">￥{item.price_info}元起</span>
@@ -124,6 +123,7 @@ class Home extends React.Component {
                 slidesPerView: 'auto',
                 slidesOffsetBefore: 28,
             })
+            // LazyLoad({el:".imgLazyload",datasrc:"data-src"})
         })
 
     }
