@@ -6,7 +6,7 @@ import "swiper/dist/css/swiper.min.css"
 import "./goods.scss"
 import "../../fonts/iconfont.css"
 import { Link } from "react-router-dom"
-import { Modal, List, Button, WhiteSpace, WingBlank, Icon } from 'antd-mobile';
+import { Modal } from 'antd-mobile';
 @inject("goods")
 @observer
 class Goods extends Component {
@@ -17,6 +17,7 @@ class Goods extends Component {
         count: 0
     };
     render() {
+        console.log(this.props.location.pathname)
         let { isLike, count } = this.state
         return (
             <div className="noTabPageContent">

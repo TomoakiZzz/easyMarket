@@ -15,9 +15,10 @@ let myTouch={
          })
     },
     swipe:function(el,direction,callback){
-        var startPoint=null,
-            endPoint=null,
-            distance = 30;
+        // console.log(12356)
+        let startPoint=0
+        let endPoint=0
+        let distance = 30;
             el.addEventListener("touchstart",function(e){
                 startPoint={
                     x:e.touches[0].clientX,
@@ -33,12 +34,11 @@ let myTouch={
             el.addEventListener("touchend",function(e){
                 
                 if(endPoint && dir(startPoint,endPoint) === direction){
-                    console.log(1)
-                    callback && callback()
-                    
+                    callback()
+                    // startPoint=0,
+                    // endPoint=0
                 }
-                startPoint=null,
-                endPoint=null
+                
             })
 
             function dir(start,end){
@@ -51,7 +51,7 @@ let myTouch={
                     console.log(diffX,diffY,absX,absY)
                 if(absX>distance || absY>distance){
                    if(absX>absY){
-                       str = diffX>0 ? "left" : "right"
+                       str = diffX>0 ? "right" : "left"
                    }else if(absY>absX){
                        str = diffY>0 ? "bottom" : "top"
                    } 
@@ -61,3 +61,4 @@ let myTouch={
             }
     }
 }
+export default myTouch

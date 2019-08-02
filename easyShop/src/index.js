@@ -13,6 +13,8 @@ import store from './store'
 import { BrowserRouter } from 'react-router-dom';
 import RouterView from './router/RouterView';
 import routers from './router/config';
+//懒加载
+// import LazyLoad from "./components/lazyLoad/lazyLoad"
 // 引入fastClick，解决300ms延迟
 var FastClick = require('fastclick');
 FastClick.attach(document.body);
@@ -21,7 +23,9 @@ ReactDOM.render(<Provider {...store}>
     <React.Fragment>
         <BrowserRouter>
             <ScrollToTop>
+              
                 <RouterView routes={routers}></RouterView>
+     
             </ScrollToTop>
         </BrowserRouter>
     </React.Fragment>
