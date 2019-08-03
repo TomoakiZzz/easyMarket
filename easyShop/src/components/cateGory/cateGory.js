@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom"
 import "./cateGory.scss"
+const loading = require("../../utils/loading.jpg")
 class CateGory extends Component {
     render() {
         // console.log(this.props)
@@ -12,7 +13,7 @@ class CateGory extends Component {
                 <div className="cateGoryGoodsWrap">
                     {goodsData.goodsList && goodsData.goodsList.map(item=><Link to={`/goods/${item.id}`} tag='div' key={item.id}>
                         <div className="goodsItemImg">
-                            <img src={item.list_pic_url}/>
+                            <img src={loading} data-src={item.list_pic_url}/>
                         </div>
                         <div className="goodsItemName">{item.name}</div>
                         <div className="goodsItemPrice">￥{item.retail_price}</div>
