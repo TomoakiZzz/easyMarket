@@ -75,6 +75,11 @@ const Goods = Loadable({
     loader:() => import ('../views/goods/goods'),
     loading:Loading
 })
+//搜索
+const Search = Loadable({
+    loader:() => import("../views/search/search"),
+    loading:Loading
+})
 const routers=[
     {
         path:'/home',
@@ -119,9 +124,13 @@ const routers=[
         path:'/goods/:id',
         component:Goods
     },{
+        path:"/search",
+        component:Search
+    },{
         path:'/',
         redirect:'/home'
     }
+    
     
 ]
 export default routers
