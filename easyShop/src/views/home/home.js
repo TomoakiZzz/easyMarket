@@ -15,7 +15,6 @@ class Home extends React.Component {
     state = {
         data: {}
     }
-
     render() {
         let { data } = this.state
         return (
@@ -56,7 +55,6 @@ class Home extends React.Component {
                             <div className="newGoodsName">{item.name}</div>
                             <div className="newGoodsPrice">￥{item.retail_price}</div>
                         </Link>)}
-
                     </div>
                 </div>
                 <div className="hotGoodsBox">
@@ -75,9 +73,7 @@ class Home extends React.Component {
                     </div>
                 </div>
                 <div className="topGoodsBox">
-                    <div className="topGoodsTitle">
-                        专题精选
-                    </div>
+                    <div className="topGoodsTitle">专题精选</div>
                     <div className="topGoodsWrap">
                         <div className="swiper-container topGoodsBan" ref="top_goods_banner">
                             <div className="swiper-wrapper">
@@ -118,14 +114,11 @@ class Home extends React.Component {
             });
             let ban2 = new Swiper(this.refs.top_goods_banner, {
                 loop: true,
-                // slidesPerView : 3, 
                 spaceBetween: 10,
                 slidesPerView: 'auto',
                 slidesOffsetBefore: 28,
             })
-            // LazyLoad({el:".imgLazyload",datasrc:"data-src"})
         })
-
     }
 }
 export default Home
