@@ -8,6 +8,7 @@ import "../../fonts/iconfont.css"
 import { Link } from "react-router-dom"
 import { Modal } from 'antd-mobile';
 import lazyLoad from "../../components/lazyLoad/lazyLoad"
+import IsLogin from "../../utils/isLogin"
 const loading = require("../../utils/loading.jpg")
 @inject("goods")
 @observer
@@ -207,4 +208,4 @@ class Goods extends Component {
         })
     }
 }
-export default (props) => <Goods {...props} key={props.location.pathname} />
+export default IsLogin((props) => <Goods {...props} key={props.location.pathname} />)

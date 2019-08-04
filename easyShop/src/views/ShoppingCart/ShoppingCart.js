@@ -3,6 +3,7 @@ import './ShoppingCart.scss'
 import Footer from '../../components/footer/footer'
 import ShoppingList from '../../components/shoppingList/shoppingList'
 import { inject, observer } from 'mobx-react'
+import IsLogin from "../../utils/isLogin"
 @inject("shoppingCart")
 @observer
 class ShoppingCart extends React.Component {
@@ -104,4 +105,4 @@ class ShoppingCart extends React.Component {
         this.setState({flag:false})
     }
 }
-export default ShoppingCart
+export default IsLogin(ShoppingCart)
