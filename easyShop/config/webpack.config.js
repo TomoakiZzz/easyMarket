@@ -55,7 +55,7 @@ module.exports = function(webpackEnv) {
   let publicPath = isEnvProduction
     ? paths.servedPath
     : isEnvDevelopment && '/';
-    // publicPath = "./"
+  // publicPath = "./"
   // Some apps do not use client-side routing with pushState.
   // For these, "homepage" can be set to "." to enable relative asset paths.
   const shouldUseRelativeAssetPaths = publicPath === './';

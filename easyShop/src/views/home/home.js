@@ -13,25 +13,23 @@ const loading = require("../../utils/loading.jpg")
 
 class Home extends React.Component {
     state = {
-        data: {}
+        isShow: true
     }
-
-    render() {
-        console.log(this.state.data)
-        let { data } = this.state
+    render() { 
+        let { isShow } = this.state
         return (
             <div className='home' ref="easyHome">
                 <div className="swiper-container banner" ref="home_ban">
-                    <div className="swiper-wrapper">
-                        {data.banner && data.banner.map(item => <div className="swiper-slide" key={item.id}>
-                            <img src={loading} data-src={item.image_url}/>
+                    <div className={`swiper-wrapper ${isShow ? 'bannerSkeleton' : ''}`}>
+                        {this.props.home.homeData.banner && this.props.home.homeData.banner.map(item => <div className="swiper-slide" key={item.id}>
+                            <img src={loading} data-src={item.image_url} />
                         </div>)}
                     </div>
                     <div className="swiper-pagination"></div>
                 </div>
-                <div className="channelWrap">
-                    {data.channel && data.channel.map(item => <Link to={`/categorys/${item.id}`} key={item.id} className="channelItem">
-                        <img src={loading} data-src={item.icon_url}/>
+                <div className={`channelWrap ${isShow ? 'channeSkeleton' : ''}`}>
+                    {this.props.home.homeData.channel && this.props.home.homeData.channel.map(item => <Link to={`/categorys/${item.id}`} key={item.id} className="channelItem">
+                        <img src={loading} data-src={item.icon_url} />
                         <div>{item.name}</div>
                     </Link>)}
                 </div>
@@ -40,10 +38,10 @@ class Home extends React.Component {
                         品牌制造商直供
                     </div>
                     <div className="brandWrap">
-                        {data.brandList && data.brandList.map(item => <Link className="brandItem" to={`/brandDetail/${item.id}`} key={item.id}>
+                        {this.props.home.homeData.brandList && this.props.home.homeData.brandList.map(item => <Link className="brandItem" to={`/brandDetail/${item.id}`} key={item.id}>
                             <div className="brandItemName">{item.name}</div>
                             <div className="brandItemMinPrice">{item.floor_price}元起</div>
-                            <img src={loading} data-src={item.new_pic_url}/>
+                            <img src={loading} data-src={item.new_pic_url} />
                         </Link>)}
                     </div>
                 </div>
@@ -52,8 +50,8 @@ class Home extends React.Component {
                         新品首发
                     </div>
                     <div className="newGoodsWrap">
-                        {data.newGoodsList && data.newGoodsList.map(item => <Link className="newGoodsItem" to={`/goods/${item.id}`} key={item.id}>
-                            <img src={loading} data-src={item.list_pic_url}/>
+                        {this.props.home.homeData.newGoodsList && this.props.home.homeData.newGoodsList.map(item => <Link className="newGoodsItem" to={`/goods/${item.id}`} key={item.id}>
+                            <img src={loading} data-src={item.list_pic_url} />
                             <div className="newGoodsName">{item.name}</div>
                             <div className="newGoodsPrice">￥{item.retail_price}</div>
                         </Link>)}
@@ -65,8 +63,8 @@ class Home extends React.Component {
                         人气推荐
                     </div>
                     <div className="hotGoodsWrap">
-                        {data.hotGoodsList && data.hotGoodsList.map(item => <Link className="hotGoodsItem" to={`goods/${item.id}`} key={item.id}>
-                            <img src={loading} data-src={item.list_pic_url}/>
+                        {this.props.home.homeData.hotGoodsList && this.props.home.homeData.hotGoodsList.map(item => <Link className="hotGoodsItem" to={`goods/${item.id}`} key={item.id}>
+                            <img src={loading} data-src={item.list_pic_url} />
                             <div className="hotGoodsInfos">
                                 <div className="hotGoodsName">{item.name}</div>
                                 <div className="hotGoodsInfo">{item.goods_brief}</div>
@@ -82,9 +80,9 @@ class Home extends React.Component {
                     <div className="topGoodsWrap">
                         <div className="swiper-container topGoodsBan" ref="top_goods_banner">
                             <div className="swiper-wrapper">
-                                {data.topicList && data.topicList.map((item, index) => <div className="swiper-slide" key={item.id}>
+                                {this.props.home.homeData.topicList && this.props.home.homeData.topicList.map((item, index) => <div className="swiper-slide" key={item.id}>
                                     <Link className='topGoodsItem' to={`/topicDetail/${item.id}`}>
-                                        <img src={loading} data-src={item.item_pic_url}/>
+                                        <img src={loading} data-src={item.item_pic_url} />
                                         <div className="topGoodSubTitle">
                                             {item.title}
                                             <span className="topGoodPrice">￥{item.price_info}元起</span>
@@ -99,16 +97,20 @@ class Home extends React.Component {
                     </div>
                 </div>
                 <div className="cateGoryBox">
-                    {data.categoryList && data.categoryList.map(item => <CateGory goodsData={item} key={item.id} />)}
+                    {this.props.home.homeData.categoryList && this.props.home.homeData.categoryList.map(item => <CateGory goodsData={item} key={item.id} />)}
                 </div>
                 <Foot />
             </div>
         )
     }
     componentDidMount() {
-        this.props.home.getDefaultData().then(res => {
-            this.setState({ data: res.data });
-            let ban1 = new Swiper(this.refs.home_ban, {
+        let This = this
+        async function init(This) {
+            await This.props.home.getDefaultData()
+            This.setState({
+                isShow:false
+            })
+            let ban1 = new Swiper(This.refs.home_ban, {
                 loop: true,
                 autoplay: {
                     delay: 1500
@@ -117,15 +119,17 @@ class Home extends React.Component {
                     el: '.swiper-pagination',
                 },
             });
-            let ban2 = new Swiper(this.refs.top_goods_banner, {
+            let ban2 = new Swiper(This.refs.top_goods_banner, {
                 loop: true,
                 // slidesPerView : 3, 
                 spaceBetween: 10,
                 slidesPerView: 'auto',
                 slidesOffsetBefore: 28,
             })
-            LazyLoad(this.refs.easyHome)
-        })
+            LazyLoad(This.refs.easyHome)
+
+        }
+        init(This)
 
     }
 }

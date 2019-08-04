@@ -7,6 +7,7 @@ export default class Home{
     // @action 修饰方法
     
     @action getDefaultData = async ()=>{
-        return this.homeData = await getHomeData()
+         let data = await getHomeData()
+         this.homeData = data.data
     }
 }

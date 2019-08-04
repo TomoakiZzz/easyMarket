@@ -12,6 +12,7 @@
             height: 4rem;
         }
     }
+    
     >.channelWrap{
         width: 100%;
         height: 1.4rem;
@@ -255,6 +256,50 @@
                     white-space: nowrap;
                 }
             }
+        }
+    }
+    .bannerSkeleton:after{
+        content:"";
+        width: 100%;
+        height: 4rem;
+        background: #ccc;
+        animation: skeleton 1.5s infinite;
+    }
+    .channeSkeleton{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .channeSkeleton:before{
+        content:"";
+        width: 95%;
+        height: 60%;
+        display: block;
+        margin: 0 .1rem 0 .1rem;
+      
+        background: #ccc;
+        animation: skeleton 1.5s infinite;
+    }
+    .channeSkeleton:after{
+        content:"";
+        width: 95%;
+        height: 30%;
+        margin-top: 0.1rem;
+        margin: 0.1rem .1rem 0 .1rem;
+        display: block;
+        
+        background: #ccc;
+        animation: skeleton 1.5s infinite;
+    }
+    @keyframes skeleton {
+        0%{
+            opacity: .5;
+        }
+        50%{
+            opacity: 1;
+        }
+        100%{
+            opacity: .5;
         }
     }
 }
