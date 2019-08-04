@@ -10,7 +10,7 @@ import ScrollToTop from "./components/scrollToTop/scrollToTop"
 import { Provider } from 'mobx-react';
 import store from './store'
 // 引入路由
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter} from 'react-router-dom';
 import RouterView from './router/RouterView';
 import routers from './router/config';
 //懒加载
@@ -21,10 +21,10 @@ FastClick.attach(document.body);
 
 ReactDOM.render(<Provider {...store}>
     <React.Fragment>
-        <BrowserRouter>
+        <HashRouter>
             <ScrollToTop>
                 <RouterView routes={routers}></RouterView>
             </ScrollToTop>
-        </BrowserRouter>
+        </HashRouter>
     </React.Fragment>
 </Provider>, document.getElementById('root'));

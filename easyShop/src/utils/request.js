@@ -6,7 +6,8 @@ import {getToken} from './index'
 const service = axios.create({
   baseURL: 
   // 'https://exam.jasonandjay.com',
-  'http://169.254.32.69:8888',
+  // 'http://169.254.32.69:8888',
+  "http://123.206.55.50:8888"
   // withCredentials: true, // 跨域请求时发送 cookies
   timeout: 5000 // request timeout
 })

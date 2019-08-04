@@ -4,6 +4,8 @@ import Footer from '../../components/footer/footer'
 import { Tabs } from 'antd-mobile';
 import { Link } from "react-router-dom"
 import { inject, observer } from 'mobx-react'
+import lazyLoad from "../../components/lazyLoad/lazyLoad"
+const loading = require("../../utils/loading.jpg")
 @inject("classification")
 @observer
 class Classification extends React.Component {
@@ -13,9 +15,9 @@ class Classification extends React.Component {
             tabs.push({ title: item.name, key: item.id })
         })
         return (
-            <div className='tabPageContent'>
+            <div className='tabPageContent' ref="lazyMain">
                 <div className='searchWrap'>
-                    <div className="searchInput" onClick={()=>{this.props.history.push("/search")}}>
+                    <div className="searchInput" onClick={() => { this.props.history.push("/search") }}>
                         <i className="fa fa-search"></i>
                         <span>搜索商品，共{this.props.classification.goodsCount}款好物</span>
                     </div>
@@ -44,7 +46,7 @@ class Classification extends React.Component {
                     </div>
                     <div className="subCategory">
                         {this.props.classification.currentCategory.currentCategory && this.props.classification.currentCategory.currentCategory.subCategoryList.map(item => <Link className="subCategoryItem" to={`/categorys/${item.id}`} key={item.id}>
-                            <img src={item.wap_banner_url} />
+                            <img src={loading} data-src={item.wap_banner_url} />
                             <div className="subCategoryItemName">{item.name}</div>
                         </Link>)}
                     </div>
@@ -56,6 +58,7 @@ class Classification extends React.Component {
     componentDidMount() {
         this.props.classification.getTabsData()
         this.props.classification.getGoodsCount()
+        lazyLoad(this.refs.lazyMain)
     }
     handTabs(tab, index) {
         this.props.classification.getCatalogCurrents({ id: tab.key })

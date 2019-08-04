@@ -7,6 +7,8 @@ import "./goods.scss"
 import "../../fonts/iconfont.css"
 import { Link } from "react-router-dom"
 import { Modal } from 'antd-mobile';
+import lazyLoad from "../../components/lazyLoad/lazyLoad"
+const loading = require("../../utils/loading.jpg")
 @inject("goods")
 @observer
 class Goods extends Component {
@@ -19,16 +21,16 @@ class Goods extends Component {
     render() {
         console.log(this.props.location.pathname)
         let { isLike, count } = this.state
-        let {userHasCollect} = this.props.goods.goodsDetailData
+        let { userHasCollect } = this.props.goods.goodsDetailData
         return (
-            <div className="noTabPageContent">
+            <div className="noTabPageContent" ref="lazyMain">
                 <div className="goodsPage">
                     <Head headTitle={this.props.goods.goodsDetailData.info && this.props.goods.goodsDetailData.info.name} />
                     <div className="swiper-container goods_banner" ref="goods_banner">
                         <div className="swiper-wrapper">
                             {this.props.goods.goodsDetailData.gallery && this.props.goods.goodsDetailData.gallery.map(item =>
                                 <div className="swiper-slide" key={item.id}>
-                                    <img src={item.img_url} />
+                                    <img src={loading} data-src={item.img_url} />
                                 </div>)}
 
                         </div>
@@ -43,10 +45,10 @@ class Goods extends Component {
                         <div className="goodsNameTitle">{this.props.goods.goodsDetailData.info && this.props.goods.goodsDetailData.info.name}</div>
                         <div className="goodsNameSubTitle">{this.props.goods.goodsDetailData.info && this.props.goods.goodsDetailData.info.goods_brief}</div>
                         <div className="goodsPriceTitle">￥{this.props.goods.goodsDetailData.info && this.props.goods.goodsDetailData.info.retail_price}</div>
-                         {(this.props.goods.goodsDetailData.brand && this.props.goods.goodsDetailData.brand.name) ? <div className="goodsBrandTitle">
+                        {(this.props.goods.goodsDetailData.brand && this.props.goods.goodsDetailData.brand.name) ? <div className="goodsBrandTitle">
                             <div>{this.props.goods.goodsDetailData.brand && this.props.goods.goodsDetailData.brand.name}</div>
-                        </div> : null} 
-                        
+                        </div> : null}
+
                     </div>
                     <div className="goodsSize" onClick={this.showModal('modal2')}>
                         <div></div>
@@ -138,16 +140,16 @@ class Goods extends Component {
                     <div className="goodsList">
                         {this.props.goods.goodsRelated.goodsList && this.props.goods.goodsRelated.goodsList.map(item => <Link className="goodsItem" to={`/goods/${item.id}`} key={item.id}>
                             <div className="goodsItemImg">
-                                <img src={item.list_pic_url} />
+                                <img src={loading} data-src={item.list_pic_url} />
                             </div>
                             <div className="goodsItemName">{item.name}</div>
                             <div className="goodsItemPrice">￥{item.retail_price}元</div>
                         </Link>)}
                     </div>
                     <div className="goodsPageDo">
-                        <div className={`isLike ${ userHasCollect && (userHasCollect===1) ? "like" : ""}`}
-                            onClick={this.handLink.bind(this)}>{ userHasCollect && (userHasCollect===1)  ? '★' : '☆'}</div>
-                        <div className="cartNum" onClick={()=>{this.props.history.push("/ShoppingCart")}}><i className="iconfont icon-gouwuche"><span>{this.props.goods.goodsCounts && this.props.goods.goodsCounts}</span></i></div>
+                        <div className={`isLike ${userHasCollect && (userHasCollect === 1) ? "like" : ""}`}
+                            onClick={this.handLink.bind(this)}>{userHasCollect && (userHasCollect === 1) ? '★' : '☆'}</div>
+                        <div className="cartNum" onClick={() => { this.props.history.push("/ShoppingCart") }}><i className="iconfont icon-gouwuche"><span>{this.props.goods.goodsCounts && this.props.goods.goodsCounts}</span></i></div>
                         <div className="addCart" onClick={this.showModal('modal2')}>加入购物车</div>
                         <div className="payGoods">立即购买</div>
                     </div>
@@ -155,7 +157,7 @@ class Goods extends Component {
             </div>
         )
     }
-    
+
     componentDidMount() {
         let This = this
         async function init(This) {
@@ -171,6 +173,7 @@ class Goods extends Component {
                     el: '.swiper-pagination',
                 },
             })
+            lazyLoad(This.refs.lazyMain)
         }
         init(This)
     }
@@ -187,7 +190,7 @@ class Goods extends Component {
     }
     handLink(flag) {
         // this.setState({ isLike: flag })
-        this.props.goods.setAddOrDelete({typeId:0,valueId:this.props.match.params.id})
+        this.props.goods.setAddOrDelete({ typeId: 0, valueId: this.props.match.params.id })
     }
     handGoodsCount(num, stat) {
         if (stat === 0 && num >= 0) {
@@ -196,11 +199,12 @@ class Goods extends Component {
             this.setState({ count: num })
         }
     }
-    handAddCar(){
+    handAddCar() {
         this.props.goods.addGoodsToShopCar({
-            goodsId:this.props.match.params.id,
-            number:this.state.count,
-            productId:this.props.goods.goodsDetailData.productList && this.props.goods.goodsDetailData.productList[0].id})
+            goodsId: this.props.match.params.id,
+            number: this.state.count,
+            productId: this.props.goods.goodsDetailData.productList && this.props.goods.goodsDetailData.productList[0].id
+        })
     }
 }
-export default (props)=><Goods {...props} key={props.location.pathname}/>
+export default (props) => <Goods {...props} key={props.location.pathname} />

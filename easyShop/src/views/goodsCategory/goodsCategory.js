@@ -5,6 +5,8 @@ import "./goodsCategory.scss"
 import { inject, observer } from 'mobx-react'
 import { Link } from "react-router-dom"
 import BScroll from 'better-scroll'
+import lazyLoad from "../../components/lazyLoad/lazyLoad"
+const loading = require("../../utils/loading.jpg")
 @inject("commodity")
 @observer
 class goodsCategory extends Component {
@@ -34,15 +36,15 @@ class goodsCategory extends Component {
                     <div>{this.props.commodity.Navtab.currentCategory && this.props.commodity.Navtab.currentCategory.front_name}</div>
                 </div>
                 <div className="goodsListMain" ref="Bscroll">
-                    <div className="goodsList">
+                    <div className="goodsList" ref="lazyMain">
                         {this.props.commodity.goodsLists && this.props.commodity.goodsLists.map(item => <Link className="goodsItem" to={`/goods/${item.id}`} key={item.id}>
                             <div className="goodsItemImg">
-                                <img src={item.list_pic_url} />
+                                <img src={loading} data-src={item.list_pic_url} />
                             </div>
                             <div className="goodsItemName">{item.name}</div>
                             <div className="goodsItemPrice">￥{item.retail_price}元</div>
                         </Link>)}
-                        {console.log(this.props.commodity.hasMore)}
+                        {/* {console.log(this.props.commodity.hasMore)} */}
                         {this.props.commodity.hasMore ? <div className="scrollMsg">正在加载...</div> : null}
                     </div>
                 </div>
@@ -56,6 +58,7 @@ class goodsCategory extends Component {
         })
         this.props.commodity.getTabData({ id: this.props.match.params.id })
         this.props.commodity.getGoodsLists({ categoryId: this.props.match.params.id, page: this.props.commodity.page, size: 10 })
+        lazyLoad(this.refs.lazyMain)
     }
     componentDidUpdate() {
         if (this.refs.Bscroll && !this.scroll) {
